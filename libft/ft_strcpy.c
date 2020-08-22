@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/22 21:53:25 by sohechai         ###   ########lyon.fr   */
+/*   Created: 2020/08/22 18:53:30 by sohechai          #+#    #+#             */
+/*   Updated: 2020/08/22 18:56:44 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-int     main(int argc, char **argv)
+char		*ft_strcpy(char *dest, const char *src)
 {
-	t_cubed st[1];
-	ft_savecub(st);
-	// if (argc < 2)
-	// {
-	// 	ft_putstr("Error - Please add a map ending by '.cub'\n");
-	// 	return (0);
-	// }
-	// else if (argc == 2)
-	// {
-	// 	ft_check_map_file(argv, st);
-	// }
-    // ft_openwindow(st);
-    return (0);
+	unsigned int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

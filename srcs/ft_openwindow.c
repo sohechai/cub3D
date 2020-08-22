@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/21 18:46:31 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/22 21:53:25 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ int				ft_close(t_cubed *st)
 // 	return (0);
 // }
 
-int     ft_openwindow()
+int     ft_openwindow(t_cubed *st)
 {
-    t_cubed st[1];
-
     if ((st->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
 	if ((st->img = mlx_new_image(st->mlx_ptr, WIDTH, HEIGHT)) == NULL)

@@ -6,7 +6,7 @@
 #    By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/08/21 22:27:31 by sohechai         ###   ########lyon.fr    #
+#    Updated: 2020/08/22 18:46:48 by sohechai         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC 	=	./srcs/main.c\
 			./srcs/ft_cub3d.c\
 			./srcs/ft_color.c\
 			./srcs/ft_check.c\
+			./srcs/ft_savefile.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

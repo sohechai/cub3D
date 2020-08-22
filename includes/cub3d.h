@@ -6,13 +6,13 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/08/21 22:00:18 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/22 21:55:55 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define BUF_SIZE 4096
+# define BUF_SIZE 1000
 # define HEIGHT 500
 # define WIDTH 700
 # define MAPH 10
@@ -27,19 +27,28 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+typedef struct	s_data
+{
+
+}
+
 typedef struct	s_cubed
 {
 	char			*worldmap[MAPH];
+	char			*mapfile;
+
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*mlx;
 	void			*win;
 	void			*img;
+
 	int				x;
 	int				y;
 	int				w;
 	int				d;
 	int				h;
+	int				i;
 	int				stepx;
 	int				stepy;
 	int				mapx;
@@ -56,6 +65,7 @@ typedef struct	s_cubed
 	int				downkey;
 	int				leftkey;
 	int				rightkey;
+
 	double			posx;
 	double			posy;
 	double			dirx;
@@ -76,6 +86,7 @@ typedef struct	s_cubed
 	double			oldtime;
 	double			movespeed;
 	double			rotspeed;
+
 	unsigned char	chan[3];
 }				t_cubed;
 
