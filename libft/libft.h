@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:42:43 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/18 19:06:46 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/27 20:57:20 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_putstr(char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *s1, const char *s2, size_t len);
+char	*ft_strstr(const char *s1, const char *s2);
 char	*ft_strdup(const char *src);
 void	*ft_memset(void *b, int c, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);

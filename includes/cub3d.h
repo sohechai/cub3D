@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/08/22 21:55:55 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/27 23:02:35 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct	s_data
+typedef struct	s_path
 {
-
-}
+	char			*texno;
+	char			*texso;
+	char			*texea;
+	char			*texwe;
+}				t_path;
 
 typedef struct	s_cubed
 {
+	t_path			*path;
 	char			*worldmap[MAPH];
 	char			*mapfile;
 
@@ -66,6 +70,9 @@ typedef struct	s_cubed
 	int				leftkey;
 	int				rightkey;
 
+	int				width;
+	int				height;
+
 	double			posx;
 	double			posy;
 	double			dirx;
@@ -95,5 +102,11 @@ void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
 void        ft_draw(t_cubed *st);
 void    	ft_check_map_file(char **argv, t_cubed *st);
+void    	ft_saveres(t_cubed *st);
+int			ft_atoiwithst(const char *str, t_cubed *st);
+void   		ft_savecolor(t_cubed *st);
+void		ft_savetexture(t_cubed *st);
+void		ft_jumpspaces(t_cubed *st);
+char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
 
 #endif
