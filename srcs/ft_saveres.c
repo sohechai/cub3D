@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/26 15:59:13 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/28 19:56:34 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ void		ft_saveres(t_cubed *st)
 				st->i++;
 				st->height = ft_atoiwithst(st->mapfile, st);
 			}
-			else
+			ft_jumpspaces(st);
+			if (ft_isdigit(st->mapfile[st->i]) == 1)
+				error = 1;
+			if (error == 1)
 			{
 				error = 1;
-				ft_putstr("Error, missing resolution on your map file");
+				ft_putstr("Error, only 2 arguments for resolution are available\n");
 			}
 		}
 		st->i++;

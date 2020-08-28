@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/26 15:59:19 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/28 19:57:55 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int    ft_savecub(t_cubed *st)
 		return (NULL);
 	// TODO free mapfile
 	ft_strcpy(st->mapfile, buf);
-	close(fd);
+	// close(fd);
 	ft_saveres(st);
 	ft_savetexture(st);
 	// ft_savecolor(st);

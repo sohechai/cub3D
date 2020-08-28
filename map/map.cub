@@ -1,10 +1,10 @@
-R   1920 1080
-EA   ./texture/bluestone.xpm
+R      1920 1080
+EA   ./textu re/bluestone.xpm
 
-SO ./texture/eagle.xpm
+SO ./text ure/eagle.xpm
 
-WE   ./texture/mossy.xpm
-NO  ./texture/colorstone.xpm
+WE   ./texture/mo ssy.xpm
+NO   ./texture /colorstone.xpm
 
 
 

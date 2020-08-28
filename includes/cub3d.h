@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/08/27 23:02:35 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/29 00:09:00 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define MAPH 10
 # define MAPW 10
 # include "../minilibx/mlx.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -33,11 +34,12 @@ typedef struct	s_path
 	char			*texso;
 	char			*texea;
 	char			*texwe;
+	char			*texsprite;
 }				t_path;
 
 typedef struct	s_cubed
 {
-	t_path			*path;
+	t_path			path[1];
 	char			*worldmap[MAPH];
 	char			*mapfile;
 
@@ -97,16 +99,30 @@ typedef struct	s_cubed
 	unsigned char	chan[3];
 }				t_cubed;
 
+char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
+char		*ft_searchtextureEOL(const char *s1, const char *s2, t_cubed *st);
+
+int			main(int argc, char **argv);
 int     	ft_openwindow();
+int			ft_atoiwithst(const char *str, t_cubed *st);
+int			ft_saveNO(t_cubed *st);
+int			ft_saveSO(t_cubed *st);
+int			ft_saveEA(t_cubed *st);
+int			ft_saveWE(t_cubed *st);
+int			ft_savesprite(t_cubed *st);
+
 void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
 void        ft_draw(t_cubed *st);
 void    	ft_check_map_file(char **argv, t_cubed *st);
 void    	ft_saveres(t_cubed *st);
-int			ft_atoiwithst(const char *str, t_cubed *st);
 void   		ft_savecolor(t_cubed *st);
 void		ft_savetexture(t_cubed *st);
 void		ft_jumpspaces(t_cubed *st);
-char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
+void    	ft_errorpathNO(t_cubed *st);
+void    	ft_errorpathSO(t_cubed *st);
+void    	ft_errorpathEA(t_cubed *st);
+void    	ft_errorpathWE(t_cubed *st);
+void    	ft_errorpathsprite(t_cubed *st);
 
 #endif

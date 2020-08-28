@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/27 23:01:26 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/08/28 18:20:53 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int     main(int argc, char **argv)
 {
 	t_cubed st[1];
 	ft_savecub(st);
-	printf("%s\n", ft_substr("salutation skafj kadjg kdsjfgkljhsdfg", 10, 3));
+	// printf("%s\n", ft_substr("salutation skafj kadjg kdsjfgkljhsdfg", 10, 3));
 
 	// if (argc < 2)
 	// {
@@ -27,6 +27,6 @@ int     main(int argc, char **argv)
 	// {
 	// 	ft_check_map_file(argv, st);
 	// }
-    // ft_openwindow(st);
+    //ft_openwindow(st);
     return (0);
 }
