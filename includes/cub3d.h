@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/08/29 00:09:00 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/03 23:20:20 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+typedef struct	s_rgb
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}				t_rgb;
+
+typedef	union	u_color
+{
+	int			color;
+	t_rgb		rgb;
+}				t_color;
+
 typedef struct	s_path
 {
 	char			*texno;
@@ -39,6 +52,7 @@ typedef struct	s_path
 
 typedef struct	s_cubed
 {
+	t_color			colo[1];
 	t_path			path[1];
 	char			*worldmap[MAPH];
 	char			*mapfile;
@@ -72,8 +86,12 @@ typedef struct	s_cubed
 	int				leftkey;
 	int				rightkey;
 
+	int				start;
+	int				end;
 	int				width;
 	int				height;
+	int				ceilingcol;
+	int				floorcol;
 
 	double			posx;
 	double			posy;
@@ -101,22 +119,26 @@ typedef struct	s_cubed
 
 char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
 char		*ft_searchtextureEOL(const char *s1, const char *s2, t_cubed *st);
+char		*ft_searchdotcub(const char *s1, const char *s2);
 
 int			main(int argc, char **argv);
 int     	ft_openwindow();
+int			ft_savecub(t_cubed *st, char *filemap);
 int			ft_atoiwithst(const char *str, t_cubed *st);
 int			ft_saveNO(t_cubed *st);
 int			ft_saveSO(t_cubed *st);
 int			ft_saveEA(t_cubed *st);
 int			ft_saveWE(t_cubed *st);
 int			ft_savesprite(t_cubed *st);
+int   		ft_save_ceilingcolor(t_cubed *st);
+int   		ft_save_floorcolor(t_cubed *st);
+int	    	ft_saveres(t_cubed *st);
 
 void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
 void        ft_draw(t_cubed *st);
 void    	ft_check_map_file(char **argv, t_cubed *st);
-void    	ft_saveres(t_cubed *st);
-void   		ft_savecolor(t_cubed *st);
+void		ft_reserror(t_cubed *st);
 void		ft_savetexture(t_cubed *st);
 void		ft_jumpspaces(t_cubed *st);
 void    	ft_errorpathNO(t_cubed *st);
@@ -124,5 +146,6 @@ void    	ft_errorpathSO(t_cubed *st);
 void    	ft_errorpathEA(t_cubed *st);
 void    	ft_errorpathWE(t_cubed *st);
 void    	ft_errorpathsprite(t_cubed *st);
+void		ft_savecolor(t_cubed *st);
 
 #endif

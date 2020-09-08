@@ -1,10 +1,10 @@
-R      1920 1080
-EA   ./textu re/bluestone.xpm
+R  1920 200
+EA   ./texture/bluestone.xpm
 
-SO ./text ure/eagle.xpm
+NO ./texture/eagle.xpm
 
-WE   ./texture/mo ssy.xpm
-NO   ./texture /colorstone.xpm
+WE  ./texture/mossy.xpm
+SO   ./texture/colorstone.xpm
 
 
 
@@ -21,6 +21,7 @@ F     0,255,25
 
 
 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 N 1 1 1 1 1 1 1 1 1 1 1 1
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1

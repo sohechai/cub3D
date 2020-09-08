@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/28 18:20:53 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/03 23:16:41 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 int     main(int argc, char **argv)
 {
 	t_cubed st[1];
-	ft_savecub(st);
-	// printf("%s\n", ft_substr("salutation skafj kadjg kdsjfgkljhsdfg", 10, 3));
-
-	// if (argc < 2)
-	// {
-	// 	ft_putstr("Error - Please add a map ending by '.cub'\n");
-	// 	return (0);
-	// }
-	// else if (argc == 2)
-	// {
-	// 	ft_check_map_file(argv, st);
-	// }
+	if (argc < 2)
+		ft_putstr("\e[41mError\e[00m\n\n- Please add a map file\n");
+	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
+		ft_savecub(st, argv[1]);
+	else
+		ft_putstr("\e[41mError\e[00m\n\n- Map must end by '.cub'\n");
     //ft_openwindow(st);
     return (0);
 }
