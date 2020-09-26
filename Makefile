@@ -6,7 +6,7 @@
 #    By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/09/04 00:00:20 by sohechai         ###   ########lyon.fr    #
+#    Updated: 2020/09/25 23:31:44 by sohechai         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,10 @@ SRC 	=	./srcs/main.c\
 			./srcs/ft_searchtexture.c\
 			./srcs/ft_errormsg.c\
 			./srcs/ft_savespritetexture.c\
+			./srcs/ft_gotomap.c\
+			./srcs/ft_checkdouble.c\
+			./srcs/ft_checkmaperror.c\
+			./srcs/ft_putxonmap.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

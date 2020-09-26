@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/08 21:15:43 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/25 23:52:30 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,27 @@ char	*ft_searchdotcub(const char *s1, const char *s2)
 	return (NULL);
 }
 
-int    ft_savecub(t_cubed *st, char *filemap)
+int		ft_checkfiles(t_cubed *st)
+{
+	ft_checkdouble(st);
+	if (ft_checktabcase(st) == 0)
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("- Do not duplicate informations in the file\n\n");
+		return (0);
+	}
+	ft_saveres(st); // OK
+	ft_savetexture(st); // OK
+	ft_savecolor(st); // OK
+	ft_gotomap(st);
+	//ft_checkmaperror(st);
+}
+
+int		ft_savecub(t_cubed *st, char *filemap)
 {
 	int     fd;
 	int     ret;
-	int     i;
-
 	char    buf[BUF_SIZE + 1];
-	i = 0;
 
 	fd = open(filemap, O_RDONLY);
 	while((ret = read(fd, buf, BUF_SIZE)) > 0)
@@ -53,13 +66,13 @@ int    ft_savecub(t_cubed *st, char *filemap)
 		ft_putstr("- Map file was not found\n\n");
 		return (0);
 	}
-	// printf("S = |%s|\n", buf);
-	if (!(st->mapfile = malloc(sizeof(char) * ft_strlen(buf) + 1)))
-		return (NULL);
-	// TODO free mapfile
-	ft_strcpy(st->mapfile, buf);
-	// close(fd);
-	// ft_reserror(st); // OK
-	// ft_savetexture(st); // OK
-	// ft_savecolor(st); // OK
+	st->mapfile = ft_strdup(buf);
+	st->tmp = ft_strdup(st->mapfile);
+	st->strcheck = ft_strdup(st->tmp);
+	st->checkdouble = ft_split(st->strcheck, '\n');
+	free(st->strcheck);
+	close(fd);
+	ft_checkfiles(st);
+	free(st->tmp);
+	free(st->mapfile);
 }

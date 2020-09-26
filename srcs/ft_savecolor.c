@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:57:53 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/03 20:05:55 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/17 18:19:40 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ int    ft_save_ceilingcolor(t_cubed *st)
 				{
 					st->i++;
 					st->colo->rgb.b = ft_atoiwithst(st->mapfile, st);
-					return (1);
+					ft_jumpspaces(st);
+					if (st->mapfile[st->i] != '\n')
+						return (0);
+					else
+						return (1);
 				}
 			}
 			return (0);
@@ -60,6 +64,7 @@ int    ft_save_floorcolor(t_cubed *st)
 	{
 		if(st->mapfile[st->i] == 'F')
 		{
+			st->check += 1;
 			st->i++;
 			st->colo->rgb.r = ft_atoiwithst(st->mapfile, st);
 			ft_jumpspaces(st);
@@ -72,7 +77,11 @@ int    ft_save_floorcolor(t_cubed *st)
 				{
 					st->i++;
 					st->colo->rgb.b = ft_atoiwithst(st->mapfile, st);
-					return (1);
+					ft_jumpspaces(st);
+					if (st->mapfile[st->i] != '\n')
+						return (0);
+					else
+						return (1);
 				}
 			}
 			return (0);
@@ -82,15 +91,21 @@ int    ft_save_floorcolor(t_cubed *st)
 	st->floorcol = st->colo->color;
 }
 
-void	ft_savecolor(t_cubed *st)
+int		ft_savecolor(t_cubed *st)
 {
+	st->check = 0;
 	if (ft_save_ceilingcolor(st) == 0 || ft_save_floorcolor(st) == 0)
 	{
 		ft_putstr("\e[41mError\e[00m\n\n");
-		ft_putstr("Missing rgb data on your map file:\n\n");
+		ft_putstr("Wrong rgb data on your map file:\n\n");
 		if (ft_save_ceilingcolor(st) == 0)
 			ft_error_rgbceiling(st);
 		if (ft_save_floorcolor(st) == 0)
 			ft_error_rgbfloor(st);
+		return (0);
+	}
+	else
+	{
+		return (1);
 	}
 }

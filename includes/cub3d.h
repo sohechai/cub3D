@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/09/03 23:20:20 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/25 23:14:37 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ typedef struct	s_cubed
 {
 	t_color			colo[1];
 	t_path			path[1];
-	char			*worldmap[MAPH];
+	char			**worldmap;
 	char			*mapfile;
+	char			*tmp;
+	char			*strcheck;
+	char			**checkdouble;
 
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -92,6 +95,11 @@ typedef struct	s_cubed
 	int				height;
 	int				ceilingcol;
 	int				floorcol;
+	int				count;
+	int				check;
+	int				*tab;
+	int				sizetab;
+	int				linenumber;
 
 	double			posx;
 	double			posy;
@@ -131,21 +139,27 @@ int			ft_saveEA(t_cubed *st);
 int			ft_saveWE(t_cubed *st);
 int			ft_savesprite(t_cubed *st);
 int   		ft_save_ceilingcolor(t_cubed *st);
-int   		ft_save_floorcolor(t_cubed *st);
+int   		ft_save_floorcolor(t_cubed *stk);
 int	    	ft_saveres(t_cubed *st);
+int			ft_reserror(t_cubed *st);
+int			ft_savetexture(t_cubed *st);
+int			ft_savecolor(t_cubed *st);
+int   		ft_checkdouble(t_cubed *st);
+int    		ft_gotomap(t_cubed *st);
+int			ft_checktabcase(t_cubed *st);
+int			ft_checkmaperror(t_cubed *st);
 
 void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
 void        ft_draw(t_cubed *st);
 void    	ft_check_map_file(char **argv, t_cubed *st);
-void		ft_reserror(t_cubed *st);
-void		ft_savetexture(t_cubed *st);
 void		ft_jumpspaces(t_cubed *st);
 void    	ft_errorpathNO(t_cubed *st);
 void    	ft_errorpathSO(t_cubed *st);
 void    	ft_errorpathEA(t_cubed *st);
 void    	ft_errorpathWE(t_cubed *st);
 void    	ft_errorpathsprite(t_cubed *st);
-void		ft_savecolor(t_cubed *st);
+void		ft_putxonmap(t_cubed *st, char *str);
+
 
 #endif

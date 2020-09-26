@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/03 22:11:41 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/10 21:11:34 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		ft_resizeres(t_cubed *st)
 	}
 }
 
-int		ft_saveres(t_cubed *st)
+int		ft_checkres(t_cubed *st)
 {
 	st->i = 0;
 	while (st->mapfile[st->i] != '\0')
@@ -63,16 +63,21 @@ int		ft_saveres(t_cubed *st)
 	}
 }
 
-void		ft_reserror(t_cubed *st)
+int		ft_saveres(t_cubed *st)
 {
-	if (ft_saveres(st) == 0)
+	if (ft_checkres(st) == 0)
 	{
 		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("Wrong rgb data on your map file:\n\n");
 		ft_putstr("Please follow this exemple :\n");
 		ft_putstr("1920 1080\n\n");
+		return (0);
 	}
 	else
+	{
 		ft_resizeres(st);
+		return (1);
+	}
 	// printf("WIDTH = %d\n", st->width);
 	// printf("HEIGHT = %d\n", st->height);
 }
