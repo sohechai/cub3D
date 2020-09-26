@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:46:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/26 00:24:29 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/26 21:16:55 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	ft_delete_n_spaces(t_cubed *st, char *str)
 		i++;
 	while (str[i] != '\0')
 	{
-		if (str[i] == ' ')
-			i++;
+		// if (str[i] == ' ')
+		// 	i++;
 		str[j] = str[i];
 		j++;
 		i++;
@@ -80,12 +80,13 @@ int		ft_gotomap(t_cubed *st)
 	// i = 0;
 	ft_delete_n_spaces(st, str);
 	ft_putxonmap(st, str);
+	// printf("str = \n%s\n", st->newstr);
 	st->worldmap = ft_split(str, '\n');
 	while (st->worldmap[x] != 0)
 	{
 		while (st->worldmap[x][y] != '\0')
 		{
-		//printf("[%c]", st->worldmap[x][y]);
+		// printf("[%c]", st->worldmap[x][y]);
 			y++;
 		}
 		y = 0;

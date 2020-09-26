@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/25 23:52:30 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/26 21:18:39 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_checkfiles(t_cubed *st)
 	ft_savetexture(st); // OK
 	ft_savecolor(st); // OK
 	ft_gotomap(st);
-	//ft_checkmaperror(st);
+	ft_checkmaperror(st);
 }
 
 int		ft_savecub(t_cubed *st, char *filemap)

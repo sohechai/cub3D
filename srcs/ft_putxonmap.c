@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/26 01:28:01 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/26 21:11:11 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		ft_longestline(t_cubed *st, char *str)
 	count = 0;
 	longestline = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		if (str[i] == '\n')
+		if (str[i] == '\n' || str[i + 1] == '\0')
 		{
 			if (count > longestline)
 				longestline = count;
@@ -35,60 +35,86 @@ int		ft_longestline(t_cubed *st, char *str)
 	return (longestline + 1);
 }
 
-void	ft_putxonmap(t_cubed *st, char *str)
+int		ft_numberofline(t_cubed *st, char *str)
 {
-	printf("+ longue ligne = %d\n", ft_longestline(st, str));
+	int		nbofline;
+	int		i;
+
+	nbofline = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n')
+			nbofline++;
+		i++;
+	}
+	return (nbofline);
+}
+
+// TODO raccourcir fonction
+int	ft_putxonmap(t_cubed *st, char *str)
+{
 	int		i;
 	int		j;
-	int		firstline = ft_longestline(st, str);
-	int		scndline = ft_longestline(st, str);
+	int		longestline;
+	int		lenuntiln;
+	int		count;
+	int		nbofline;
 	char	*tmp;
 
 	i = 0;
 	j = 0;
+	longestline = ft_longestline(st, str);
+	lenuntiln = 0;
+	count = longestline;
+	nbofline = ft_numberofline(st, str);
 	tmp = ft_strdup(str);
-	while (str[j] && firstline > 0)
+	if (!(st->newstr = malloc(sizeof(char) * ((longestline + 2) * (nbofline + 2)) + 1)))
+		return (NULL);
+	while (count >= 0)
 	{
-		str[j] = 'X';
+		st->newstr[j] = 'X';
 		j++;
-		firstline--;
+		count--;
 	}
-	str[j] = '\n';
+	st->newstr[j] = '\n';
 	j++;
-	str[j] = 'X';
+	st->newstr[j] = 'X';
 	j++;
+	count = longestline;
 	while (tmp[i] != '\0')
 	{
-		if (tmp[i] == '\n')
+		if (tmp[i] == '\n' || st->newstr[j] == '\n')
 		{
-			str[j] = 'X';
+			while (lenuntiln < count)
+			{
+				st->newstr[j] = 'X';
+				j++;
+				lenuntiln++;
+			}
+			lenuntiln = 0;
+			st->newstr[j] = '\n';
 			j++;
-			str[j] = '\n';
-			j++;
-			str[j] = 'X';
+			st->newstr[j] = 'X';
 			j++;
 			i++;
 		}
-		// if (tmp[i] == ' ')
-		// {
-		// 	str[j] = 'X';
-		// 	j++;
-		// 	i++;
-		// }
-		str[j] = tmp[i];
+		st->newstr[j] = tmp[i];
 		i++;
 		j++;
+		lenuntiln++;
 	}
-	str[j] = 'X';
+	st->newstr[j] = 'X';
 	j++;
-	str[j] = '\n';
+	st->newstr[j] = '\n';
 	j++;
-	while (str[j] && scndline > 0)
+	count = longestline;
+	while (count >= 0)
 	{
-		str[j] = 'X';
+		st->newstr[j] = 'X';
 		j++;
-		scndline--;
+		count--;
 	}
-	str[j] = '\0';
-	printf("str = [\n%s\n]", str);
+	st->newstr[j] = '\0';
+	ft_strcpy(str, st->newstr);
 }

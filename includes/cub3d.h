@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/09/25 23:14:37 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/26 21:02:46 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct	s_cubed
 	char			*mapfile;
 	char			*tmp;
 	char			*strcheck;
+	char			*newstr;
 	char			**checkdouble;
 
 	void			*mlx_ptr;
@@ -159,7 +160,7 @@ void    	ft_errorpathSO(t_cubed *st);
 void    	ft_errorpathEA(t_cubed *st);
 void    	ft_errorpathWE(t_cubed *st);
 void    	ft_errorpathsprite(t_cubed *st);
-void		ft_putxonmap(t_cubed *st, char *str);
+int			ft_putxonmap(t_cubed *st, char *str);
 
 
 #endif
