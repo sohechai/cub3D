@@ -6,7 +6,7 @@
 #    By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/09/25 23:31:44 by sohechai         ###   ########lyon.fr    #
+#    Updated: 2020/09/29 00:30:58 by sohechai         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRC 	=	./srcs/main.c\
 			./srcs/ft_checkdouble.c\
 			./srcs/ft_checkmaperror.c\
 			./srcs/ft_putxonmap.c\
+			./srcs/ft_errormsgcandf.c\
+			./srcs/ft_checkmapcar.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

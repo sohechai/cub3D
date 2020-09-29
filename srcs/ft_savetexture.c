@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:47:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/10 21:11:34 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 16:03:44 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int		ft_saveNO(t_cubed *st)
 			if (ft_searchtextureEOL(st->mapfile, ".xpm", st) != NULL)
 			{
 				st->end = st->i - st->start + 4;
+				st->i += 4;
+				ft_jumpspaces(st);
+				if (st->mapfile[st->i] != '\n')
+					return (0);
 				st->path->texno = ft_substr(st->mapfile, st->start, st->end);
 				return (1);
 			}
@@ -49,6 +53,10 @@ int		ft_saveSO(t_cubed *st)
 			if (ft_searchtextureEOL(st->mapfile, ".xpm", st) != NULL)
 			{
 				st->end = st->i - st->start + 4;
+				st->i += 4;
+				ft_jumpspaces(st);
+				if (st->mapfile[st->i] != '\n')
+					return (0);
 				st->path->texso = ft_substr(st->mapfile, st->start, st->end);
 				return (1);
 			}
@@ -73,6 +81,10 @@ int		ft_saveEA(t_cubed *st)
 			if (ft_searchtextureEOL(st->mapfile, ".xpm", st) != NULL)
 			{
 				st->end = st->i - st->start + 4;
+				st->i += 4;
+				ft_jumpspaces(st);
+				if (st->mapfile[st->i] != '\n')
+					return (0);
 				st->path->texea = ft_substr(st->mapfile, st->start, st->end);
 				return (1);
 			}
@@ -97,6 +109,10 @@ int		ft_saveWE(t_cubed *st)
 			if (ft_searchtextureEOL(st->mapfile, ".xpm", st) != NULL)
 			{
 				st->end = st->i - st->start + 4;
+				st->i += 4;
+				ft_jumpspaces(st);
+				if (st->mapfile[st->i] != '\n')
+					return (0);
 				st->path->texwe = ft_substr(st->mapfile, st->start, st->end);
 				return (1);
 			}

@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/26 21:18:39 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 17:34:09 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int		ft_checkfiles(t_cubed *st)
 	ft_saveres(st); // OK
 	ft_savetexture(st); // OK
 	ft_savecolor(st); // OK
-	ft_gotomap(st);
-	ft_checkmaperror(st);
+	if(ft_gotomap(st) == 0)
+		return (0);
+	ft_maperror(st);
 }
 
 int		ft_savecub(t_cubed *st, char *filemap)
@@ -70,9 +71,10 @@ int		ft_savecub(t_cubed *st, char *filemap)
 	st->tmp = ft_strdup(st->mapfile);
 	st->strcheck = ft_strdup(st->tmp);
 	st->checkdouble = ft_split(st->strcheck, '\n');
-	free(st->strcheck);
 	close(fd);
 	ft_checkfiles(st);
+	free(st->strcheck);
 	free(st->tmp);
 	free(st->mapfile);
+	free(st->checkdouble);
 }

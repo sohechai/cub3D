@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/09/26 21:02:46 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 00:31:01 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,12 @@ typedef struct	s_cubed
 	int				*tab;
 	int				sizetab;
 	int				linenumber;
+	int				longestline;
+	int				lenuntiln;
+	int				lenmax;
+	int				nbofline;
+	int				k;
+	int				l;
 
 	double			posx;
 	double			posy;
@@ -149,6 +155,9 @@ int   		ft_checkdouble(t_cubed *st);
 int    		ft_gotomap(t_cubed *st);
 int			ft_checktabcase(t_cubed *st);
 int			ft_checkmaperror(t_cubed *st);
+int			ft_maperror(t_cubed *st);
+int			ft_putxonmap(t_cubed *st, char *str);
+int			ft_checkmapcar(t_cubed *st);
 
 void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
@@ -160,7 +169,8 @@ void    	ft_errorpathSO(t_cubed *st);
 void    	ft_errorpathEA(t_cubed *st);
 void    	ft_errorpathWE(t_cubed *st);
 void    	ft_errorpathsprite(t_cubed *st);
-int			ft_putxonmap(t_cubed *st, char *str);
+void		ft_error_rgbceiling(t_cubed *st);
+void		ft_error_rgbfloor(t_cubed *st);
 
 
 #endif

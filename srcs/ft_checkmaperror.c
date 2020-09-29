@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 20:53:15 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/26 21:19:52 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 02:05:52 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ int		ft_isposorobj(int c)
 		return (1);
 	return (0);
 }
+
+int		ft_issurrouded(int c, t_cubed *st, int x, int y)
+{
+	if (st->worldmap[x][y - 1] == c || st->worldmap[x - 1][y - 1] == c ||
+		st->worldmap[x - 1][y] == c || st->worldmap[x - 1][y + 1] == c ||
+		st->worldmap[x][y + 1] == c || st->worldmap[x + 1][y + 1] == c ||
+		st->worldmap[x + 1][y] == c || st->worldmap[x + 1][y - 1] == c)
+		return (1);
+	return (0);
+}
+
 
 int		ft_checkmaperror(t_cubed *st)
 {
@@ -32,12 +43,46 @@ int		ft_checkmaperror(t_cubed *st)
 		{
 			if(ft_isposorobj(st->worldmap[x][y]) == 1)
 			{
-				printf("c = [%c]\n", st->worldmap[x][y]);
+				if (ft_issurrouded('X', st, x, y) == 1)
+					return (0);
 			}
 			y++;
 		}
 		y = 0;
     	x++;
 	}
+	return (1);
+}
+
+int		ft_maperror(t_cubed *st)
+{
+	if (ft_checkmaperror(st) == 0)
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("Map is open:\n\n");
+		ft_putstr("-Map must be closed\n");
+		return (0);
+	}
+	if (ft_checkmapcar(st) == 0)
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("Forbidden map character :\n\n");
+		ft_putstr("-Only 0, 1, 2, N, S, E and W are allowed\n");
+		return (0);
+	}
+	if (ft_checkplayer(st) == 0)
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("Map contain more than one player position:\n\n");
+		ft_putstr("-Map must contain only one player position\n");
+		return (0);
+	}
+	// if (ft_checkiswallaround(st) == 0)
+	// {
+	// 	ft_putstr("\e[41mError\e[00m\n\n");
+	// 	ft_putstr("Map is open:\n\n");
+	// 	ft_putstr("-Map must be surrouded by wall\n");
+	// 	return (0);
+	// }
 	return (1);
 }

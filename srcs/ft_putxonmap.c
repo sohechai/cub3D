@@ -6,11 +6,39 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/26 21:11:11 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 00:53:29 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+// int			ft_longestandnbofline(t_cubed *st, char *str)
+// {
+// 	int		count;
+// 	int		longestline;
+// 	int		nbofline;
+// 	int		i;
+
+// 	st->lenmax = 0;
+// 	longestline = 0;
+// 	nbofline = 0;
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '\n' || str[i + 1] == '\0')
+// 		{
+// 			if (count > longestline)
+// 				longestline = count;
+// 			if (str[i] == '\n')
+// 				nbofline++;
+// 			count = 0;
+// 		}
+// 		count++;
+// 		i++;
+// 	}
+// 	st->nbofline = nbofline;
+// 	return (longestline + 1);
+// }
 
 int		ft_longestline(t_cubed *st, char *str)
 {
@@ -51,70 +79,73 @@ int		ft_numberofline(t_cubed *st, char *str)
 	return (nbofline);
 }
 
-// TODO raccourcir fonction
-int	ft_putxonmap(t_cubed *st, char *str)
+void		ft_putlineofX(t_cubed *st)
 {
-	int		i;
-	int		j;
-	int		longestline;
-	int		lenuntiln;
-	int		count;
-	int		nbofline;
+	st->lenmax = st->longestline;
+	while (st->lenmax >= 0)
+	{
+		st->newstr[st->l] = 'X';
+		st->l++;
+		st->lenmax--;
+	}
+}
+
+void		ft_replacespacex(t_cubed *st, char *tmp)
+{
+	while (tmp[st->k] != '\0')
+	{
+		if (tmp[st->k] == '\n')
+		{
+			while (st->lenuntiln < st->lenmax)
+			{
+				st->newstr[st->l] = 'X';
+				st->l++;
+				st->lenuntiln++;
+			}
+			st->lenuntiln = 0;
+			st->newstr[st->l] = '\n';
+			st->l++;
+			st->newstr[st->l] = 'X';
+			st->l++;
+			st->k++;
+		}
+		if (tmp[st->k] == ' ')
+			st->newstr[st->l] = 'X';
+		else
+			st->newstr[st->l] = tmp[st->k];
+		st->k++;
+		st->l++;
+		st->lenuntiln++;
+	}
+}
+
+int			ft_putxonmap(t_cubed *st, char *str)
+{
 	char	*tmp;
 
-	i = 0;
-	j = 0;
-	longestline = ft_longestline(st, str);
-	lenuntiln = 0;
-	count = longestline;
-	nbofline = ft_numberofline(st, str);
+	st->k = 0;
+	st->l = 0;
+	st->longestline = ft_longestline(st, str);
+	st->nbofline = ft_numberofline(st, str);
+	st->lenuntiln = 0;
+	st->lenmax = st->longestline;
 	tmp = ft_strdup(str);
-	if (!(st->newstr = malloc(sizeof(char) * ((longestline + 2) * (nbofline + 2)) + 1)))
+	if (!(st->newstr = malloc(sizeof(char) * ((st->longestline + 2) * (st->nbofline + 2)) + 1)))
 		return (NULL);
-	while (count >= 0)
-	{
-		st->newstr[j] = 'X';
-		j++;
-		count--;
-	}
-	st->newstr[j] = '\n';
-	j++;
-	st->newstr[j] = 'X';
-	j++;
-	count = longestline;
-	while (tmp[i] != '\0')
-	{
-		if (tmp[i] == '\n' || st->newstr[j] == '\n')
-		{
-			while (lenuntiln < count)
-			{
-				st->newstr[j] = 'X';
-				j++;
-				lenuntiln++;
-			}
-			lenuntiln = 0;
-			st->newstr[j] = '\n';
-			j++;
-			st->newstr[j] = 'X';
-			j++;
-			i++;
-		}
-		st->newstr[j] = tmp[i];
-		i++;
-		j++;
-		lenuntiln++;
-	}
-	st->newstr[j] = 'X';
-	j++;
-	st->newstr[j] = '\n';
-	j++;
-	count = longestline;
-	while (count >= 0)
-	{
-		st->newstr[j] = 'X';
-		j++;
-		count--;
-	}
-	st->newstr[j] = '\0';
+	ft_putlineofX(st);
+	st->newstr[st->l] = '\n';
+	st->l++;
+	st->newstr[st->l] = 'X';
+	st->l++;
+	st->lenmax = st->longestline;
+	ft_replacespacex(st, tmp);
+	st->newstr[st->l] = 'X';
+	st->l++;
+	st->newstr[st->l] = '\n';
+	st->l++;
+	// st->lenmax = st->longestline;
+	ft_putlineofX(st);
+	st->newstr[st->l] = '\0';
 	ft_strcpy(str, st->newstr);
+	// printf("newstr =\n%s\n", str);
 }
