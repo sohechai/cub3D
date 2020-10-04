@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/09/29 00:30:58 by sohechai         ###   ########lyon.fr    #
+#    Updated: 2020/10/04 20:21:44 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRC 	=	./srcs/main.c\
 			./srcs/ft_putxonmap.c\
 			./srcs/ft_errormsgcandf.c\
 			./srcs/ft_checkmapcar.c\
+			./srcs/ft_drawtexture.c\
+			./srcs/ft_drawsprite.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

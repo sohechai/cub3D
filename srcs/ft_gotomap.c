@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:46:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 02:05:14 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 17:48:28 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,24 @@ int		ft_gotomap(t_cubed *st)
 	str[i] = '\0';
 	ft_delete_n_spaces(st, str);
 	ft_msgnomapfound(st, str);
+	// TODO free v
+	st->finalmap = ft_strdup(str);
+	// printf("final map = %s\n", st->finalmap);
 	ft_putxonmap(st, str);
 	st->worldmap = ft_split(str, '\n');
 	//
 	// printf("str= %s\n", str);
-	while (st->worldmap[x] != 0)
-	{
-		while (st->worldmap[x][y] != '\0')
-		{
-			printf("[%c]", st->worldmap[x][y]);
-			y++;
-		}
-		y = 0;
-		printf("\n");
-    	x++;
-	}
+	// while (st->worldmap[x] != 0)
+	// {
+	// 	while (st->worldmap[x][y] != '\0')
+	// 	{
+	// 		printf("[%c]", st->worldmap[x][y]);
+	// 		y++;
+	// 	}
+	// 	y = 0;
+	// 	printf("\n");
+    // 	x++;
+	// }
 	//
 	return (1);
 }

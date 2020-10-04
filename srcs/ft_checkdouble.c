@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:32:11 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/17 19:28:09 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 17:46:27 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		ft_checkdouble(t_cubed *st)
 			st->sizetab++;
 		x++;
 	}
+	//TODO free v
 	if (!(st->tab = malloc(sizeof(int) * st->sizetab)))
 		return (NULL);
 	x = 0;

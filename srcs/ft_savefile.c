@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_savefile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 17:34:09 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/04 18:49:00 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@ char	*ft_searchdotcub(const char *s1, const char *s2)
 	return (NULL);
 }
 
+//TODO faire une fonction qui free a chaque fois que ca return (0);
+// si ca return (0); free ce qu'il faut free;
+
 int		ft_checkfiles(t_cubed *st)
 {
+	// int		x = 0;
+	// int		y = 0;
 	ft_checkdouble(st);
 	if (ft_checktabcase(st) == 0)
 	{
@@ -49,7 +54,22 @@ int		ft_checkfiles(t_cubed *st)
 	ft_savecolor(st); // OK
 	if(ft_gotomap(st) == 0)
 		return (0);
-	ft_maperror(st);
+	if(ft_maperror(st) == 0)
+		return (0);
+	st->map = ft_split(st->finalmap, '\n');
+	//
+	// while (st->map[x] != 0)
+	// {
+	// 	while (st->map[x][y] != '\0')
+	// 	{
+	// 		printf("[%c]", st->map[x][y]);
+	// 		y++;
+	// 	}
+	// 	y = 0;
+	// 	printf("\n");
+    // 	x++;
+	// }
+	//
 }
 
 int		ft_savecub(t_cubed *st, char *filemap)
@@ -73,6 +93,8 @@ int		ft_savecub(t_cubed *st, char *filemap)
 	st->checkdouble = ft_split(st->strcheck, '\n');
 	close(fd);
 	ft_checkfiles(st);
+	free(st->finalmap);
+	free(st->worldmap);
 	free(st->strcheck);
 	free(st->tmp);
 	free(st->mapfile);

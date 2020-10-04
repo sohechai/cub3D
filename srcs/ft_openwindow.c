@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_openwindow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/28 16:04:21 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/04 20:26:11 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	int		ft_keyclose(int keycode, t_cubed *st)
 	if (keycode == 53)
 	{
 		mlx_destroy_window(st->mlx_ptr, st->win_ptr);
-		mlx_destroy_image(st->mlx_ptr, st->img);
+		mlx_destroy_image(st->mlx_ptr, st->img_ptr);
 		exit(1);
 	}
 	return (1);
@@ -75,7 +75,7 @@ int     ft_openwindow(t_cubed *st)
 {
     if ((st->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
-	if ((st->img = mlx_new_image(st->mlx_ptr, WIDTH, HEIGHT)) == NULL)
+	if ((st->img_ptr = mlx_new_image(st->mlx_ptr, WIDTH, HEIGHT)) == NULL)
 		return (EXIT_FAILURE);
     if ((st->win_ptr = mlx_new_window(st->mlx_ptr, WIDTH, HEIGHT, "Cub3d")) == NULL)
 		return (EXIT_FAILURE);

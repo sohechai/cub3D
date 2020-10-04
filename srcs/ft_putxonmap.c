@@ -6,7 +6,7 @@
 /*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 00:53:29 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/09/29 17:41:01 by sohechai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,7 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	st->l++;
 	st->newstr[st->l] = '\n';
 	st->l++;
-	// st->lenmax = st->longestline;
 	ft_putlineofX(st);
 	st->newstr[st->l] = '\0';
 	ft_strcpy(str, st->newstr);
-	// printf("newstr =\n%s\n", str);
 }
