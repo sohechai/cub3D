@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_saveres.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/10 21:11:34 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/10 23:12:49 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 
 void		ft_resizeres(t_cubed *st)
 {
-	if (st->width > 2560 || st->width < 0)
+	if (st->window->width > 2560 || st->window->width < 0)
 	{
-		st->width = 2560;
+		st->window->width = 2560;
 		ft_putstr("\e[7mNote:\e[00m\nWidth have been resized at 2560\n\n");
 	}
-	else if (st->width < 150)
+	else if (st->window->width < 150)
 	{
-		st->width = 150;
+		st->window->width = 150;
 		ft_putstr("\e[7mNote:\e[00m\nWidth have been resized at 150\n\n");
 	}
-	if (st->height > 1520 || st->height < 0)
+	if (st->window->height > 1520 || st->window->height < 0)
 	{
-		st->height = 1520;
+		st->window->height = 1520;
 		ft_putstr("\e[7mNote:\e[00m\nHeight have been resized at 1520\n\n");
 	}
-	else if (st->height < 150)
+	else if (st->window->height < 150)
 	{
-		st->height = 150;
+		st->window->height = 150;
 		ft_putstr("\e[7mNote:\e[00m\nHeight have been resized at 150\n\n");
 	}
 }
@@ -46,11 +46,11 @@ int		ft_checkres(t_cubed *st)
 		if(st->mapfile[st->i] == 'R')
 		{
 			st->i++;
-			st->width = ft_atoiwithst(st->mapfile, st);
+			st->window->width = ft_atoiwithst(st->mapfile, st);
 			ft_jumpspaces(st);
 			if (ft_isdigit(st->mapfile[st->i]) == 1)
 			{
-				st->height = ft_atoiwithst(st->mapfile, st);
+				st->window->height = ft_atoiwithst(st->mapfile, st);
 				ft_jumpspaces(st);
 				if (st->mapfile[st->i] != '\n')
 					return (0);
@@ -78,6 +78,6 @@ int		ft_saveres(t_cubed *st)
 		ft_resizeres(st);
 		return (1);
 	}
-	// printf("WIDTH = %d\n", st->width);
-	// printf("HEIGHT = %d\n", st->height);
+	// printf("WIDTH = %d\n", st->window->width);
+	// printf("HEIGHT = %d\n", st->window->height);
 }

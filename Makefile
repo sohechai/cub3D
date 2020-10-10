@@ -6,7 +6,7 @@
 #    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/10/04 20:21:44 by sofiahechai      ###   ########lyon.fr    #
+#    Updated: 2020/10/11 01:23:17 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ MINILIB = 	./minilibx/ -framework OpenGL -framework AppKit
 
 SRC 	=	./srcs/main.c\
 			./srcs/ft_openwindow.c\
-			./srcs/ft_cub3d.c\
 			./srcs/ft_color.c\
 			./srcs/ft_savefile.c\
 			./srcs/ft_saveres.c\
@@ -35,8 +34,12 @@ SRC 	=	./srcs/main.c\
 			./srcs/ft_putxonmap.c\
 			./srcs/ft_errormsgcandf.c\
 			./srcs/ft_checkmapcar.c\
-			./srcs/ft_drawtexture.c\
-			./srcs/ft_drawsprite.c\
+			./srcs/ft_settextures.c\
+			./srcs/raycasting/ft_cub3d.c\
+			./srcs/raycasting/ft_calcultexture.c\
+			./srcs/raycasting/ft_putpixel.c\
+			./srcs/utils/ft_free.c\
+			./srcs/utils/ft_initstruct.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

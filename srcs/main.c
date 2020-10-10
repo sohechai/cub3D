@@ -3,24 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/09 15:31:04 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/11 00:43:11 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+int		main_loop(t_cubed *st, t_window *window, t_ray *ray)
+{
+	// key_manager(st);
+	mlx_clear_window(st->window->mlx_ptr, st->window->win_ptr);
+	ft_draw(st, window, *ray);
+	return (0);
+}
+
 int     main(int argc, char **argv)
 {
-	t_cubed st[1];
+	t_cubed		*st;
+	if (!(st = ft_initstruct()))
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("- Failed to allocate memory for structure\n");
+		exit(EXIT_FAILURE);
+	}
 	if (argc < 2)
 		ft_putstr("\e[41mError\e[00m\n\n- Please add a map file\n");
 	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
 		ft_savecub(st, argv[1]);
 	else
 		ft_putstr("\e[41mError\e[00m\n\n- Map must end by '.cub'\n");
-    //ft_openwindow(st);
-    return (0);
+    ft_openwindow(st);
+    return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkmapcar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 00:29:49 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 00:37:46 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/11 01:03:59 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ int		ft_checkmapcar(t_cubed *st)
 	return (1);
 }
 
+void	ft_configpos(t_cubed *st, char c)
+{
+	if (c == 'N')
+	{
+		st->dirx = 0;
+		st->diry = -1;
+	}
+	if (c == 'S')
+	{
+		st->dirx = 0;
+		st->diry = 1;
+	}
+	if (c == 'E')
+	{
+		st->dirx = 1;
+		st->diry = 0;
+	}
+	if (c == 'W')
+	{
+		st->dirx = -1;
+		st->diry = 0;
+	}
+}
+
 int		ft_checkplayer(t_cubed *st)
 {
 	int		x;
@@ -51,7 +75,12 @@ int		ft_checkplayer(t_cubed *st)
 		{
 			if(st->worldmap[x][y] == 'N' || st->worldmap[x][y] == 'S' ||
 				st->worldmap[x][y] == 'E' || st->worldmap[x][y] == 'W')
+			{
+				ft_configpos(st, st->worldmap[x][y]);
+				st->posx = (double)x + 0.5;
+				st->posy = (double)y + 0.5;
 				player++;
+			}
 			y++;
 		}
 		y = 0;
