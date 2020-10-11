@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:47:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/11 01:33:35 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:31:20 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int		ft_savetexture(t_cubed *st)
 	if (ft_saveNO(st, st->north) == 0 || ft_saveSO(st, st->south) == 0||
 		ft_saveEA(st, st->east) == 0 || ft_saveWE(st, st->west) == 0 || ft_savesprite(st, st->sprit) == 0)
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Wrong path file :\n\n");
 		if (ft_saveNO(st, st->north) == 0)

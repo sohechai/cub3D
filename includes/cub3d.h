@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/11 01:26:24 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:19:54 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,8 +256,8 @@ int			ft_putxonmap(t_cubed *st, char *str);
 int			ft_checkmapcar(t_cubed *st);
 int			ft_draw(t_cubed *st, t_window *window, t_ray ray);
 int			ft_destroywindow(t_cubed *st);
-void		ft_exitgame(t_cubed *st);
 
+void		ft_exitgame(t_cubed *st);
 void		ft_color(t_cubed *st);
 void        ft_setdata(t_cubed *st);
 void    	ft_check_map_file(char **argv, t_cubed *st);

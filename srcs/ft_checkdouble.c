@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkdouble.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:32:11 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 17:46:27 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:30:37 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int		ft_checktabcase(t_cubed *st)
 		while (j < st->sizetab)
 		{
 			if (st->tab[i] == st->tab[j] && i != j)
+			{
+				st->check = 1;
 				return (0);
+			}
 			j++;
 		}
 		j = 0;

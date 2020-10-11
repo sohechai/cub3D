@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gotomap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:46:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 17:48:28 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:31:55 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		ft_msgnomapfound(t_cubed *st, char *str)
 {
 	if (str[0] == '\0')
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("- Missing map on your map file\n\n");
 		return (0);

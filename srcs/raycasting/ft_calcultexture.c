@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 23:46:53 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/10 23:57:15 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/11 23:50:36 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,23 @@ void		ft_settexture(t_cubed *st, t_img *texture, t_ray *ray)
 {
 	int	d;
 
-	while (ray->y <= ray->drawend)
-	{
-		d = ray->y * texture->sizeline - st->window->height
-			* texture->sizeline / 2 + ray->lineheight * texture->sizeline / 2;
-		ray->texty = ((d * texture->height) / ray->lineheight)
-			/ texture->sizeline;
-		st->img->img_data[ray->y * st->img->sizeline
-			+ ray->x * st->img->bpp / 8] =
-			texture->img_data[ray->texty * texture->sizeline
-			+ ray->textx * (texture->bpp / 8)];
-		st->img->img_data[ray->y * st->img->sizeline
-			+ ray->x * st->img->bpp / 8 + 1] =
-			texture->img_data[ray->texty * texture->sizeline
-			+ ray->textx * (texture->bpp / 8) + 1];
-		st->img->img_data[ray->y * st->img->sizeline
-			+ ray->x * st->img->bpp / 8 + 2] =
-			texture->img_data[ray->texty * texture->sizeline
-			+ ray->textx * (texture->bpp / 8) + 2];
-		ray->y++;
-	}
+	d = ray->y * texture->sizeline - st->window->height
+		* texture->sizeline / 2 + ray->lineheight * texture->sizeline / 2;
+	ray->texty = ((d * texture->height) / ray->lineheight)
+		/ texture->sizeline;
+	st->img->img_data[ray->y * st->img->sizeline
+		+ ray->x * st->img->bpp / 8] =
+		texture->img_data[ray->texty * texture->sizeline
+		+ ray->textx * (texture->bpp / 8)];
+	st->img->img_data[ray->y * st->img->sizeline
+		+ ray->x * st->img->bpp / 8 + 1] =
+		texture->img_data[ray->texty * texture->sizeline
+		+ ray->textx * (texture->bpp / 8) + 1];
+	st->img->img_data[ray->y * st->img->sizeline
+		+ ray->x * st->img->bpp / 8 + 2] =
+		texture->img_data[ray->texty * texture->sizeline
+		+ ray->textx * (texture->bpp / 8) + 2];
+	ray->y++;
 }
 
 void		ft_calcultexture(t_cubed *st, t_ray *ray)
@@ -57,5 +54,6 @@ void		ft_calcultexture(t_cubed *st, t_ray *ray)
 		textx = texture->width - textx - 1;
 	ray->textx = textx;
 	ray->y = ray->drawstart;
-	ft_settexture(st, texture, ray);
+	while (ray->y <= ray->drawend)
+		ft_settexture(st, texture, ray);
 }

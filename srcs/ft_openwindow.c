@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/11 01:26:09 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/11 23:50:47 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,23 @@ static	int		ft_keyclose(int keycode, t_cubed *st)
 // 	exit(1);
 // }
 
-int     ft_openwindow(t_cubed *st)
+int     ft_openwindow(t_cubed *st, t_window *window)
 {
     if ((st->window->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
 	if ((st->window->win_ptr = mlx_new_window(st->window->mlx_ptr, st->window->width, st->window->height, "Cub3d")) == NULL)
 		return (EXIT_FAILURE);
 	ft_settextures(st);
-	ft_draw(st, st->window, st->ray);
 	if ((st->img->img_ptr = mlx_new_image(st->window->mlx_ptr, st->window->width, st->window->height)) == NULL)
 		return (EXIT_FAILURE);
     st->img->img_data = mlx_get_data_addr(st->img->img_ptr,
 		&(st->img->bpp), &(st->img->sizeline), &(st->img->endian));
+	ft_draw(st, st->window, st->ray);
 	// TODO revoir en dessous
 	mlx_hook(st->window->win_ptr, 2, 0, ft_keyclose, st);
 	// mlx_hook(st->window->win_ptr, KEY_RELEASE, 1L << 1, key_release, game);
 	mlx_hook(st->window->win_ptr, 17, 0, ft_destroywindow, st);
-	mlx_loop_hook(st->window->mlx_ptr, main_loop, st);
+	// mlx_loop_hook(st->window->mlx_ptr, main_loop, st);
 	mlx_loop(st->window->mlx_ptr);
 	return (1);
 }

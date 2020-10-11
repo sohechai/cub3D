@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_savecolor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:57:53 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/27 01:30:26 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:37:14 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			ft_savergbdata(t_cubed *st)
 			st->colo->rgb.g = ft_atoiwithst(st->mapfile, st);
 		else
 			return (0);
+		ft_jumpspaces(st);
 		if (st->mapfile[st->i] == ',')
 		{
 			st->i++;
@@ -53,6 +54,7 @@ int			ft_save_ceilingcolor(t_cubed *st)
 				st->colo->rgb.r = ft_atoiwithst(st->mapfile, st);
 			else
 				return (0);
+			ft_jumpspaces(st);
 			if (ft_savergbdata(st) == 0)
 				return (0);
 		}
@@ -74,6 +76,7 @@ int    ft_save_floorcolor(t_cubed *st)
 				st->colo->rgb.r = ft_atoiwithst(st->mapfile, st);
 			else
 				return (0);
+			ft_jumpspaces(st);
 			if (ft_savergbdata(st) == 0)
 				return (0);
 		}
@@ -84,9 +87,9 @@ int    ft_save_floorcolor(t_cubed *st)
 
 int		ft_savecolor(t_cubed *st)
 {
-	st->check = 0;
 	if (ft_save_ceilingcolor(st) == 0 || ft_save_floorcolor(st) == 0)
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Wrong rgb data on your map file:\n\n");
 		if (ft_save_ceilingcolor(st) == 0)

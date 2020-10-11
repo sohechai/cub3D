@@ -1,27 +1,28 @@
-R  1111 200
+R 720 480
 
-EA   ./texture/bluestone.xpm
+EA   ./texture/brown-brick-wall-texture.xpm
 
-NO ./texture/eagle.xpm
+NO ./texture/old-brick-texture.xpm
 
+WE  ./texture/yellow-wall-texture.xpm
 
-
-WE  ./texture/mossy.xpm
-SO   ./texture/colorstone.xpm
-
+SO   ./texture/red-brick-wall-texture.xpm
 
 
-S   ./texture/monstre.xpm
+
+S   ./texture/sprite.xpm
 
 
-C     220,100,0 
+C    123,104,238
 
-F     0, 250, 0 
+F     105,105,105
 
 
-1111111111111
-1010101101011
-1010101101011
-10000N0000001
-1000000000001
-1111111111111
+1111111111
+1000000001
+1111000001
+1000000001
+100W000001
+1000001001
+1000001001
+1111111111

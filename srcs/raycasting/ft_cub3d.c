@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:32:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/11 01:08:08 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 00:17:36 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void        ft_draw1(t_cubed *st, t_window *window, t_ray *ray)
 {
-    ray->camerax = 2 * ray->x / (double)window->width - 1;
+    ray->camerax = 2 * ray->x / (double)st->window->width - 1;
 	ray->raydirx = st->dirx + st->planex * ray->camerax;
 	ray->raydiry = st->diry + st->planey * ray->camerax;
 	ray->mapx = (int)st->posx;
@@ -74,11 +74,11 @@ void        ft_draw3(t_cubed *st, t_ray *ray)
 				ray->side = 3;
 		}
 		//TODO retirer guillemet si bug '1'
-		if (st->map[ray->mapy][ray->mapx] >= 1 &&
-			st->map[ray->mapy][ray->mapx] != 2)
+		if (st->map[ray->mapy][ray->mapx] >= '1' &&
+			st->map[ray->mapy][ray->mapx] != '2')
 			ray->hit = 1;
 		// TODO faire fonctions is sprite
-		else if (st->map[ray->mapy][ray->mapx] == 2)
+		else if (st->map[ray->mapy][ray->mapx] == '2')
 		{
 			//issprite
 			st->spritex = ray->mapx;
@@ -93,14 +93,14 @@ void        ft_draw4(t_cubed *st, t_ray *ray, t_window *window)
 		ray->perpwalldist = (ray->mapx - st->posx + (1 - ray->stepx) / 2) / ray->raydirx;
 	else if (ray->side == 2 || ray->side == 3)
 		ray->perpwalldist = (ray->mapy - st->posy + (1 - ray->stepy) / 2) / ray->raydiry;
-	ray->lineheight = (int)(window->height / ray->perpwalldist);
+	ray->lineheight = (int)(st->window->height / ray->perpwalldist);
 	ray->z_buffer[ray->x] = ray->perpwalldist;
-	ray->drawstart = -ray->lineheight / 2 + window->height / 2;
+	ray->drawstart = -ray->lineheight / 2 + st->window->height / 2;
 	if (ray->drawstart < 0)
 		ray->drawstart = 0;
-	ray->drawend = ray->lineheight / 2 + window->height / 2;
-	if (ray->drawend >= window->height)
-		ray->drawend = window->height - 1;
+	ray->drawend = ray->lineheight / 2 + st->window->height / 2;
+	if (ray->drawend >= st->window->height)
+		ray->drawend = st->window->height - 1;
 	if (ray->side == 0 || ray->side == 1)
 		ray->wallx = st->posy +
 			ray->perpwalldist * ray->raydiry;
@@ -109,12 +109,12 @@ void        ft_draw4(t_cubed *st, t_ray *ray, t_window *window)
 		ray->raydirx;
 	ray->wallx -= floor(ray->wallx);
 	ft_calcultexture(st, ray);
-	// ICIII
+	// // ICIII
 	ft_setcolor(st, ray);
 	// while (ray->drawstart <= ray->drawend)
 	// {
 	// 	ft_draw(st);
-	// 	st->imgdata[ray->drawstart++ * window->width + i] = st->colori;
+	// 	st->imgdata[ray->drawstart++ * st->window->width + i] = st->colori;
 	// }
 }
 
@@ -155,7 +155,7 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray)
 	}
 	ft_bzero(ray.z_buffer, sizeof(double) * window->width);
 	ft_setdata(st);
-    while (ray.x < window->width)
+    while (ray.x < st->window->width)
 	{
 		ft_draw1(st, window, &ray);
 		ft_draw2(st, &ray);
@@ -164,7 +164,6 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray)
 		ray.x++;
 	}
 	free(ray.z_buffer);
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
-			st->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, st->img->img_ptr, 0, 0);
 }
 

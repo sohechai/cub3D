@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/04 18:49:00 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:30:37 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_checkfiles(t_cubed *st)
 {
 	// int		x = 0;
 	// int		y = 0;
+	st->check = 0;
 	ft_checkdouble(st);
 	if (ft_checktabcase(st) == 0)
 	{
@@ -49,9 +50,9 @@ int		ft_checkfiles(t_cubed *st)
 		ft_putstr("- Do not duplicate informations in the file\n\n");
 		return (0);
 	}
-	ft_saveres(st); // OK
-	ft_savetexture(st); // OK
-	ft_savecolor(st); // OK
+	ft_saveres(st);
+	ft_savetexture(st);
+	ft_savecolor(st);
 	if(ft_gotomap(st) == 0)
 		return (0);
 	if(ft_maperror(st) == 0)

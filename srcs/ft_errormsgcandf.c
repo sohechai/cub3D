@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errormsgcandf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 00:07:37 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/27 00:08:48 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:19:56 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/10 23:12:49 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:31:02 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO verifier s'il faut gerer les cas de int max pour les res
 
-void		ft_resizeres(t_cubed *st)
+void		ft_resizeres(t_cubed *st, t_window *window)
 {
 	if (st->window->width > 2560 || st->window->width < 0)
 	{
@@ -38,7 +38,7 @@ void		ft_resizeres(t_cubed *st)
 	}
 }
 
-int		ft_checkres(t_cubed *st)
+int		ft_checkres(t_cubed *st, t_window *window)
 {
 	st->i = 0;
 	while (st->mapfile[st->i] != '\0')
@@ -65,17 +65,18 @@ int		ft_checkres(t_cubed *st)
 
 int		ft_saveres(t_cubed *st)
 {
-	if (ft_checkres(st) == 0)
+	if (ft_checkres(st, st->window) == 0)
 	{
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Wrong rgb data on your map file:\n\n");
 		ft_putstr("Please follow this exemple :\n");
 		ft_putstr("1920 1080\n\n");
+		st->check = 1;
 		return (0);
 	}
 	else
 	{
-		ft_resizeres(st);
+		ft_resizeres(st, st->window);
 		return (1);
 	}
 	// printf("WIDTH = %d\n", st->window->width);

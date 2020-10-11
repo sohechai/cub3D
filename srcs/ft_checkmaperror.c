@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checkmaperror.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 20:53:15 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 02:05:52 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/12 01:32:12 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		ft_maperror(t_cubed *st)
 {
 	if (ft_checkmaperror(st) == 0)
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Map is open:\n\n");
 		ft_putstr("-Map must be closed\n");
@@ -65,6 +66,7 @@ int		ft_maperror(t_cubed *st)
 	}
 	if (ft_checkmapcar(st) == 0)
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Forbidden map character :\n\n");
 		ft_putstr("-Only 0, 1, 2, N, S, E and W are allowed\n");
@@ -72,6 +74,7 @@ int		ft_maperror(t_cubed *st)
 	}
 	if (ft_checkplayer(st) == 0)
 	{
+		st->check = 1;
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("Map contain more than one player position:\n\n");
 		ft_putstr("-Map must contain only one player position\n");
