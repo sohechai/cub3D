@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putxonmap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/09/29 17:41:01 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 02:11:47 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	st->lenmax = st->longestline;
 	tmp = ft_strdup(str);
 	if (!(st->newstr = malloc(sizeof(char) * ((st->longestline + 2) * (st->nbofline + 2)) + 1)))
-		return (NULL);
+		return (0);
 	ft_putlineofX(st);
 	st->newstr[st->l] = '\n';
 	st->l++;
@@ -146,4 +146,5 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	ft_putlineofX(st);
 	st->newstr[st->l] = '\0';
 	ft_strcpy(str, st->newstr);
+	return (1);
 }

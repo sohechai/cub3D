@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:20:27 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/11 01:47:05 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 00:26:42 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_texture(t_cubed *st, t_img *texture)
 	{
 		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("- Failed loading texture\n");
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	texture->img_data =
 		mlx_get_data_addr(texture->img_ptr, &(texture->bpp),
@@ -33,5 +33,5 @@ void		ft_settextures(t_cubed *st)
 	set_texture(st, st->east);
 	set_texture(st, st->west);
 	// if (st->sp_texture->path)
-		set_texture(st, st->sprit);
+		// set_texture(st, st->sprit);
 }

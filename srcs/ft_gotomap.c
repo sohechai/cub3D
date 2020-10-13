@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:46:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:31:55 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 02:06:25 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		ft_msgnomapfound(t_cubed *st, char *str)
 		ft_putstr("- Missing map on your map file\n\n");
 		return (0);
 	}
+	return (1);
 }
 
 int		ft_gotomap(t_cubed *st)

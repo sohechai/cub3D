@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:31:02 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 02:09:30 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		ft_checkres(t_cubed *st, t_window *window)
 		}
 		st->i++;
 	}
+	return (0);
 }
 
 int		ft_saveres(t_cubed *st)
@@ -79,6 +80,5 @@ int		ft_saveres(t_cubed *st)
 		ft_resizeres(st, st->window);
 		return (1);
 	}
-	// printf("WIDTH = %d\n", st->window->width);
-	// printf("HEIGHT = %d\n", st->window->height);
+	return (1);
 }

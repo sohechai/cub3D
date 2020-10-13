@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 23:46:53 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/11 23:50:36 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 15:57:43 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_settexture(t_cubed *st, t_img *texture, t_ray *ray)
 {
-	int	d;
+	unsigned int	d;
 
 	d = ray->y * texture->sizeline - st->window->height
 		* texture->sizeline / 2 + ray->lineheight * texture->sizeline / 2;
@@ -55,5 +55,8 @@ void		ft_calcultexture(t_cubed *st, t_ray *ray)
 	ray->textx = textx;
 	ray->y = ray->drawstart;
 	while (ray->y <= ray->drawend)
+	{
 		ft_settexture(st, texture, ray);
+		// st->img->img_data[ray->drawstart++ * ray->x + ray->x] = st->img->colori;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 00:25:41 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/11 01:18:36 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 02:00:36 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ int		ft_savesprite(t_cubed *st, t_img *texture)
 		}
 		return (0);
 	}
+	return (0);
 }

@@ -6,11 +6,20 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:57:53 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:37:14 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 15:08:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int			ft_checkcolor(t_cubed *st)
+{
+	if ((st->rgb->rgb.r > 0 && st->rgb->rgb.r < 255)
+		&& (st->rgb->rgb.g > 0 && st->rgb->rgb.g < 255)
+		&& (st->rgb->rgb.b > 0 && st->rgb->rgb.b < 255))
+		return (1);
+	return (0);
+}
 
 int			ft_savergbdata(t_cubed *st)
 {
@@ -19,7 +28,7 @@ int			ft_savergbdata(t_cubed *st)
 		st->i++;
 		ft_jumpspaces(st);
 		if (ft_isdigit(st->mapfile[st->i]) == 1)
-			st->colo->rgb.g = ft_atoiwithst(st->mapfile, st);
+			st->rgb->rgb.g = ft_atoiwithst(st->mapfile, st);
 		else
 			return (0);
 		ft_jumpspaces(st);
@@ -28,7 +37,7 @@ int			ft_savergbdata(t_cubed *st)
 			st->i++;
 			ft_jumpspaces(st);
 			if (ft_isdigit(st->mapfile[st->i]) == 1)
-				st->colo->rgb.b = ft_atoiwithst(st->mapfile, st);
+				st->rgb->rgb.b = ft_atoiwithst(st->mapfile, st);
 			else
 				return (0);
 			ft_jumpspaces(st);
@@ -38,7 +47,7 @@ int			ft_savergbdata(t_cubed *st)
 				return (1);
 		}
 	}
-	return (0);
+	//return (0);
 }
 
 int			ft_save_ceilingcolor(t_cubed *st)
@@ -51,7 +60,7 @@ int			ft_save_ceilingcolor(t_cubed *st)
 			st->i++;
 			ft_jumpspaces(st);
 			if (ft_isdigit(st->mapfile[st->i]) == 1)
-				st->colo->rgb.r = ft_atoiwithst(st->mapfile, st);
+				st->rgb->rgb.r = ft_atoiwithst(st->mapfile, st);
 			else
 				return (0);
 			ft_jumpspaces(st);
@@ -60,7 +69,14 @@ int			ft_save_ceilingcolor(t_cubed *st)
 		}
 		st->i++;
 	}
-	st->ceilingcol = st->colo->color;
+	if (ft_checkcolor(st) == 1)
+	{
+		st->ceilingcol = st->rgb->rgb.r;
+		st->ceilingcol = (st->ceilingcol << 8) + st->rgb->rgb.g;
+		st->ceilingcol = (st->ceilingcol << 8) + st->rgb->rgb.b;
+	}
+	else
+		return (0);
 }
 
 int    ft_save_floorcolor(t_cubed *st)
@@ -73,7 +89,7 @@ int    ft_save_floorcolor(t_cubed *st)
 			st->i++;
 			ft_jumpspaces(st);
 			if (ft_isdigit(st->mapfile[st->i]) == 1)
-				st->colo->rgb.r = ft_atoiwithst(st->mapfile, st);
+				st->rgb->rgb.r = ft_atoiwithst(st->mapfile, st);
 			else
 				return (0);
 			ft_jumpspaces(st);
@@ -82,7 +98,14 @@ int    ft_save_floorcolor(t_cubed *st)
 		}
 		st->i++;
 	}
-	st->floorcol = st->colo->color;
+	if (ft_checkcolor(st) == 1)
+	{
+		st->floorcol = st->rgb->rgb.r;
+		st->floorcol = (st->floorcol << 8) + st->rgb->rgb.g;
+		st->floorcol = (st->floorcol << 8) + st->rgb->rgb.b;
+	}
+	else
+		return (0);
 }
 
 int		ft_savecolor(t_cubed *st)
@@ -99,5 +122,9 @@ int		ft_savecolor(t_cubed *st)
 		return (0);
 	}
 	else
+	{
+		printf("colorc = %d\n", st->ceilingcol);
+		printf("colorf = %d\n", st->floorcol);
 		return (1);
+	}
 }

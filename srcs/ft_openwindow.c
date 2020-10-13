@@ -6,18 +6,65 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/11 23:50:47 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 15:51:25 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int		ft_keyclose(int keycode, t_cubed *st)
+void	key_manager(t_cubed *st)
 {
-	if (keycode == 53)
-	{
+	if (st->a_key == 1)
+		move_left(st);
+	else if (st->s_key == 1)
+		move_backward(st);
+	else if (st->d_key == 1)
+		move_right(st);
+	else if (st->w_key == 1)
+		move_forward(st);
+	else if (st->left_key == 1)
+		rotate_left(st);
+	else if (st->right_key == 1)
+		rotate_right(st);
+	if (st->esc_key == 1)
 		ft_exitgame(st);
-	}
+}
+
+static	int		ft_keyon(int keycode, t_cubed *st)
+{
+	if (keycode == 53) // ESC
+		ft_exitgame(st);
+	else if (keycode == 0) // A
+		move_left(st);
+	else if (keycode == 1) // S
+		move_backward(st);
+	else if (keycode == 2) // D
+		move_right(st);
+	else if (keycode == 13) // W
+		move_forward(st);
+	else if (keycode == 123) // left arr
+		rotate_left(st);
+	else if (keycode == 124) // right arr
+		rotate_right(st);
+	return (1);
+}
+
+static	int		ft_keyoff(int keycode, t_cubed *st)
+{
+	if (keycode == 53) // ESC
+		st->esc_key = 0;
+	else if (keycode == 0) // A
+		st->a_key = 0;
+	else if (keycode == 1) // S
+		st->s_key = 0;
+	else if (keycode == 2) // D
+		st->d_key = 0;
+	else if (keycode == 13) // W
+		st->w_key = 0;
+	else if (keycode == 123) // left arr
+		st->left_key = 0;
+	else if (keycode == 124) // right arr
+		st->right_key = 0;
 	return (1);
 }
 
@@ -33,7 +80,7 @@ static	int		ft_keyclose(int keycode, t_cubed *st)
 // 	exit(1);
 // }
 
-int     ft_openwindow(t_cubed *st, t_window *window)
+int     ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 {
     if ((st->window->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
@@ -42,14 +89,17 @@ int     ft_openwindow(t_cubed *st, t_window *window)
 	ft_settextures(st);
 	if ((st->img->img_ptr = mlx_new_image(st->window->mlx_ptr, st->window->width, st->window->height)) == NULL)
 		return (EXIT_FAILURE);
-    st->img->img_data = mlx_get_data_addr(st->img->img_ptr,
-		&(st->img->bpp), &(st->img->sizeline), &(st->img->endian));
-	ft_draw(st, st->window, st->ray);
+	st->img->img_data = (int *)mlx_get_data_addr(st->img->img_ptr,
+	&st->img->bpp, &st->img->sizeline, &st->img->endian);
+    // st->img->img_data = mlx_get_data_addr(st->img->img_ptr,
+	// 	&(st->img->bpp), &(st->img->sizeline), &(st->img->endian));
+	ft_draw(st, st->window, st->ray, img);
 	// TODO revoir en dessous
-	mlx_hook(st->window->win_ptr, 2, 0, ft_keyclose, st);
-	// mlx_hook(st->window->win_ptr, KEY_RELEASE, 1L << 1, key_release, game);
+	mlx_hook(st->window->win_ptr, 2, 0, ft_keyon, st);
+	// mlx_hook(st->window->win_ptr, 3, 1, ft_keyoff, st);
 	mlx_hook(st->window->win_ptr, 17, 0, ft_destroywindow, st);
 	// mlx_loop_hook(st->window->mlx_ptr, main_loop, st);
 	mlx_loop(st->window->mlx_ptr);
 	return (1);
 }
+

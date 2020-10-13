@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 00:29:49 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:18:42 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 01:01:26 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_configpos(t_cubed *st, char c)
 		st->dirx = -1;
 		st->diry = 0;
 	}
+	ft_setdata(st);
 }
 
 int		ft_checkplayer(t_cubed *st)

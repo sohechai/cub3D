@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/12 01:19:54 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 16:07:59 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,10 @@ typedef	union	u_color
 	t_rgb		rgb;
 }				t_color;
 
-typedef struct	s_sprite
-{
-	double		x;
-	double		y;
-}				t_sprite;
-
-typedef struct	s_path
-{
-	char			*texno;
-	char			*texso;
-	char			*texea;
-	char			*texwe;
-	char			*texsprite;
-}				t_path;
-
 typedef struct	s_ray
 {
 	int		x;
 	int		y;
-	double	camerax;
-	double	perpwalldist;
-	double	raydirx;
-	double	raydiry;
-	double	sidedistx;
-	double	sidedisty;
-	double	deltadistx;
-	double	deltadisty;
 	int		mapx;
 	int		mapy;
 	int		stepx;
@@ -79,15 +56,27 @@ typedef struct	s_ray
 	int		drawend;
 	int		textx;
 	int		texty;
+
+	double	camerax;
+	double	perpwalldist;
+	double	raydirx;
+	double	raydiry;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
 	double	wallx;
 	double	*z_buffer;
+
 }				t_ray;
 
 typedef struct	s_img
 {
 	void	*img_ptr;
+
 	char	*img_data;
 	char	*path;
+
 	int		bpp;
 	int		sizeline;
 	int		endian;
@@ -99,24 +88,25 @@ typedef struct	s_window
 {
 	int		width;
 	int		height;
+
 	void	*mlx_ptr;
 	void	*win_ptr;
 }				t_window;
 
 typedef struct	s_cubed
 {
-	t_color			colo[1];
-	t_path			path[1];
-	t_sprite		sprite[1];
-	t_img			*img;
+	t_color			*rgb;
 	t_window		*window;
 	t_ray			ray;
 
+	t_img			*img;
 	t_img			*north;
 	t_img			*south;
 	t_img			*east;
 	t_img			*west;
 	t_img			*sprit;
+
+// parsing
 
 	char			**worldmap;
 	char			**checkdouble;
@@ -127,41 +117,12 @@ typedef struct	s_cubed
 	char			*strcheck;
 	char			*newstr;
 
-	void			*mlx;
-	void			*win;
-
-	int				x;
-	int				y;
-	int				w;
-	int				d;
-	int				h;
 	int				i;
 	int				stepx;
 	int				stepy;
-	int				mapx;
-	int				mapy;
-	int				hit;
 	int				side;
-	int				lineheight;
-	int				drawstart;
-	int				drawend;
-	int				color;
-	int				*imgdata;
-	int				*spriteorder;
-	int				sl;
-	int				nsprite;
-	int				screenshot;
-	int				c_color;
-	int				f_color;
 
-	int				colori;
-	int				colorsky;
-	int				colorfloor;
-
-	int				upkey;
-	int				downkey;
-	int				leftkey;
-	int				rightkey;
+// raycasting
 
 	int				start;
 	int				end;
@@ -171,7 +132,6 @@ typedef struct	s_cubed
 	int				check;
 	int				*tab;
 	int				sizetab;
-	int				linenumber;
 	int				longestline;
 	int				lenuntiln;
 	int				lenmax;
@@ -179,15 +139,15 @@ typedef struct	s_cubed
 	int				k;
 	int				l;
 
-	int				drawstarty;
-	int				drawstartx;
-	int				drawendx;
-	int				drawendy;
-	int				spritescreenx;
-	int				spriteh;
-	int				spritew;
-	int				textx;
-	int				texty;
+// key
+
+	int				esc_key;
+	int				w_key;
+	int				a_key;
+	int				s_key;
+	int				d_key;
+	int				left_key;
+	int				right_key;
 
 	double			posx;
 	double			posy;
@@ -195,32 +155,13 @@ typedef struct	s_cubed
 	double			diry;
 	double			planex;
 	double			planey;
-	double			camerax;
-	double			raydirx;
-	double			raydiry;
-	double			deltadistx;
-	double			deltadisty;
-	double			sidedistx;
-	double			sidedisty;
-	double			perpwalldist;
-	double			time;
-	double			oldtime;
 	double			movespeed;
 	double			rotspeed;
-	double			invdet;
-	double			transx;
-	double			transy;
+
+//a enlever et mettre dans ray
 
 	double			spritex;
 	double			spritey;
-
-	double			wallx;
-	double			step;
-	double			textpos;
-	double			*spdist;
-	double			*zbuffer;
-
-	unsigned char	chan[3];
 }				t_cubed;
 
 t_cubed     *ft_initstruct(void);
@@ -231,9 +172,11 @@ char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
 char		*ft_searchtextureEOL(const char *s1, const char *s2, t_cubed *st);
 char		*ft_searchdotcub(const char *s1, const char *s2);
 
+static int	ft_key(int keycode, t_cubed *st);
+
 int			main(int argc, char **argv);
 int			main_loop(t_cubed *st, t_window *window, t_ray *ray);
-int     	ft_openwindow();
+int     	ft_openwindow(t_cubed *st, t_window *window, t_img *img);
 int			ft_savecub(t_cubed *st, char *filemap);
 int			ft_atoiwithst(const char *str, t_cubed *st);
 int			ft_saveNO(t_cubed *st, t_img *texture);
@@ -251,11 +194,12 @@ int   		ft_checkdouble(t_cubed *st);
 int    		ft_gotomap(t_cubed *st);
 int			ft_checktabcase(t_cubed *st);
 int			ft_checkmaperror(t_cubed *st);
+int			ft_checkplayer(t_cubed *st);
 int			ft_maperror(t_cubed *st);
 int			ft_putxonmap(t_cubed *st, char *str);
 int			ft_checkmapcar(t_cubed *st);
-int			ft_draw(t_cubed *st, t_window *window, t_ray ray);
-int			ft_destroywindow(t_cubed *st);
+int			ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img);
+int			ft_destroywindow(t_cubed *st, t_window *window);
 
 void		ft_exitgame(t_cubed *st);
 void		ft_color(t_cubed *st);
@@ -271,7 +215,15 @@ void		ft_error_rgbceiling(t_cubed *st);
 void		ft_error_rgbfloor(t_cubed *st);
 void		ft_calculsprite(t_cubed *st, int i);
 void		ft_calcultexture(t_cubed *st, t_ray *ray);
-void        ft_setcolor(t_cubed *st, t_ray *ray);
+void        ft_setcolor(t_cubed *st, t_ray *ray, t_img *img);
 void		ft_settextures(t_cubed *st);
+void		ft_clearstruct(t_cubed *st);
+void		key_manager(t_cubed *st);
+int			move_forward(t_cubed *st);
+int			move_backward(t_cubed *st);
+int			move_right(t_cubed *st);
+int			move_left(t_cubed *st);
+void		rotate_left(t_cubed *st);
+void		rotate_right(t_cubed *st);
 
 #endif

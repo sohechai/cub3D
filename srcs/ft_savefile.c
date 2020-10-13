@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:30:37 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 02:06:35 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,8 @@ int		ft_checkfiles(t_cubed *st)
 	if(ft_maperror(st) == 0)
 		return (0);
 	st->map = ft_split(st->finalmap, '\n');
-	//
-	// while (st->map[x] != 0)
-	// {
-	// 	while (st->map[x][y] != '\0')
-	// 	{
-	// 		printf("[%c]", st->map[x][y]);
-	// 		y++;
-	// 	}
-	// 	y = 0;
-	// 	printf("\n");
-    // 	x++;
-	// }
-	//
+	free(st->finalmap);
+	return (1);
 }
 
 int		ft_savecub(t_cubed *st, char *filemap)
@@ -94,10 +83,10 @@ int		ft_savecub(t_cubed *st, char *filemap)
 	st->checkdouble = ft_split(st->strcheck, '\n');
 	close(fd);
 	ft_checkfiles(st);
-	free(st->finalmap);
 	free(st->worldmap);
 	free(st->strcheck);
 	free(st->tmp);
 	free(st->mapfile);
 	free(st->checkdouble);
+	return (1);
 }

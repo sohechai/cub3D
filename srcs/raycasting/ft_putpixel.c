@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 23:57:19 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/11 23:50:36 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/13 16:00:51 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void		ft_putpixel(t_img *img, int x, int y, int color)
 	img->img_data[y * img->sizeline + x * img->bpp / 8 + 2] = b;
 }
 
-void        ft_setcolor(t_cubed *st, t_ray *ray)
+void        ft_setcolor(t_cubed *st, t_ray *ray, t_img *img)
 {
-    int     y;
+	int     y;
 
     y = 0;
     while (y < ray->drawstart)
