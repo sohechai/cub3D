@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 16:07:59 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/16 00:06:41 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,35 @@ typedef struct	s_ray
 
 }				t_ray;
 
+typedef struct	s_sprite
+{
+	int	x;
+	int	y;
+}				t_sprite;
+
+typedef struct	s_sprites
+{
+	t_sprite			*sprite;
+	double				distance;
+	double				spritex;
+	double				spritey;
+	double				invdet;
+	double				transformx;
+	double				transformy;
+	int					drawstart_x;
+	int					drawstart_y;
+	int					drawend_x;
+	int					drawend_y;
+	int					spritescreenx;
+	int					spriteheight;
+	int					spritewidth;
+	int					textx;
+	int					texty;
+	int					x;
+	int					y;
+	struct s_sprites	*next;
+}				t_sprites;
+
 typedef struct	s_img
 {
 	void	*img_ptr;
@@ -105,8 +134,18 @@ typedef struct	s_cubed
 	t_img			*east;
 	t_img			*west;
 	t_img			*sprit;
+	t_sprites		*firstsprite;
 
 // parsing
+
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			planex;
+	double			planey;
+	double			movespeed;
+	double			rotspeed;
 
 	char			**worldmap;
 	char			**checkdouble;
@@ -149,15 +188,6 @@ typedef struct	s_cubed
 	int				left_key;
 	int				right_key;
 
-	double			posx;
-	double			posy;
-	double			dirx;
-	double			diry;
-	double			planex;
-	double			planey;
-	double			movespeed;
-	double			rotspeed;
-
 //a enlever et mettre dans ray
 
 	double			spritex;
@@ -167,6 +197,7 @@ typedef struct	s_cubed
 t_cubed     *ft_initstruct(void);
 t_img		*ft_initimg(void);
 t_window	*ft_initwindow(void);
+t_sprites	*ft_initsprites(t_sprite *sprite, double distance);
 
 char		*ft_searchtexture(const char *s1, const char *s2, t_cubed *st);
 char		*ft_searchtextureEOL(const char *s1, const char *s2, t_cubed *st);
@@ -218,7 +249,9 @@ void		ft_calcultexture(t_cubed *st, t_ray *ray);
 void        ft_setcolor(t_cubed *st, t_ray *ray, t_img *img);
 void		ft_settextures(t_cubed *st);
 void		ft_clearstruct(t_cubed *st);
-void		key_manager(t_cubed *st);
+void		ft_keymanagement(t_cubed *st);
+void		ft_createnewsprite(t_cubed *st, t_ray *ray);
+void		ft_drawsprite(t_cubed *st, t_window *window, t_ray *ray);
 int			move_forward(t_cubed *st);
 int			move_backward(t_cubed *st);
 int			move_right(t_cubed *st);

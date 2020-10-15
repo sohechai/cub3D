@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:32:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 16:01:15 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/15 23:21:04 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,12 @@ void        ft_draw3(t_cubed *st, t_ray *ray)
 		}
 		if (st->map[ray->mapy][ray->mapx] == '1' &&
 			st->map[ray->mapy][ray->mapx] != '2')
+		{
 			ray->hit = 1;
-		// TODO faire fonctions is sprite
+		}
 		else if (st->map[ray->mapy][ray->mapx] == '2')
 		{
-			//issprite
-			// st->spritex = ray->mapx;
-			// st->spritey = ray->mapy;
+			ft_createnewsprite(st, ray);
 		}
 	}
 }
@@ -165,6 +164,8 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 		ft_draw4(st, &ray, window, img);
 		ray.x++;
 	}
+	if (st->firstsprite != NULL)
+		ft_drawsprite(st, window, &ray);
 	free(ray.z_buffer);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, st->img->img_ptr, 0, 0);
 	return (1);

@@ -6,13 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 15:51:25 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/15 22:39:48 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	key_manager(t_cubed *st)
+void	ft_keymanagement(t_cubed *st)
 {
 	if (st->a_key == 1)
 		move_left(st);

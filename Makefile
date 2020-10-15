@@ -6,7 +6,7 @@
 #    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/10/13 15:38:39 by sofiahechai      ###   ########lyon.fr    #
+#    Updated: 2020/10/15 22:52:51 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,11 @@ SRC 	=	./srcs/main.c\
 			./srcs/raycasting/ft_cub3d.c\
 			./srcs/raycasting/ft_calcultexture.c\
 			./srcs/raycasting/ft_putpixel.c\
+			./srcs/raycasting/ft_calculsprite.c\
+			./srcs/raycasting/ft_drawsprite.c\
 			./srcs/utils/ft_free.c\
 			./srcs/utils/ft_initstruct.c\
+			./srcs/utils/ft_initstruct2.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 

@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 15:30:03 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/15 23:17:38 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main_loop(t_cubed *st, t_window *window, t_ray *ray)
 {
-	key_manager(st);
+	ft_keymanagement(st);
 	mlx_clear_window(st->window->mlx_ptr, st->window->win_ptr);
 	ft_draw(st, window, *ray, st->img);
 	return (0);
@@ -23,13 +23,13 @@ int		main_loop(t_cubed *st, t_window *window, t_ray *ray)
 int     main(int argc, char **argv)
 {
 	t_cubed		*st;
-	st = ft_initstruct();
-	// {
-	// 	ft_putstr("\e[41mError\e[00m\n\n");
-	// 	ft_putstr("- Failed to allocate memory for structure\n");
-	// 	st->check = 1;
-	// 	exit(EXIT_FAILURE);
-	// }
+	if(!(st = ft_initstruct()))
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("- Failed to allocate memory for structure\n");
+		st->check = 1;
+		exit(EXIT_FAILURE);
+	}
 	if (argc > 3 || argc < 2)
 	{
 		st->check = 1;
@@ -38,7 +38,7 @@ int     main(int argc, char **argv)
 		exit (EXIT_FAILURE);
 		return (0);
 	}
-	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
+	if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
 		ft_savecub(st, argv[1]);
 	else
 	{
