@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:20:27 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 00:26:42 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/17 18:34:10 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void		ft_settextures(t_cubed *st)
 	set_texture(st, st->south);
 	set_texture(st, st->east);
 	set_texture(st, st->west);
-	// if (st->sp_texture->path)
-		// set_texture(st, st->sprit);
+	if (st->sprit->path)
+		set_texture(st, st->sprit);
 }

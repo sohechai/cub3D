@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 22:57:15 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 14:58:59 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/17 19:58:45 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void		ft_initst_01(t_cubed *st)
 	st->diry = 0;
 	st->planex = 0;
 	st->planey = 0;
-	st->movespeed = 0.17;
-	st->rotspeed = 0.12;
+	st->movespeed = 0.25;
+	st->rotspeed = 0.15;
 	st->rgb->rgb.r = 0;
 	st->rgb->rgb.g = 0;
 	st->rgb->rgb.b = 0;
@@ -103,6 +103,7 @@ t_cubed     *ft_initstruct(void)
 		return (NULL);
 	if (!(st->rgb = malloc(sizeof(t_color) * 1)))
 		return (NULL);
+	st->firstsprite = NULL;
 	ft_initst_01(st);
 	if (!(st->north = ft_initimg())
 		|| !(st->south = ft_initimg())

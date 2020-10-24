@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/15 22:39:48 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 19:45:20 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,6 @@ static	int		ft_keyon(int keycode, t_cubed *st)
 		rotate_left(st);
 	else if (keycode == 124) // right arr
 		rotate_right(st);
-	return (1);
-}
-
-static	int		ft_keyoff(int keycode, t_cubed *st)
-{
-	if (keycode == 53) // ESC
-		st->esc_key = 0;
-	else if (keycode == 0) // A
-		st->a_key = 0;
-	else if (keycode == 1) // S
-		st->s_key = 0;
-	else if (keycode == 2) // D
-		st->d_key = 0;
-	else if (keycode == 13) // W
-		st->w_key = 0;
-	else if (keycode == 123) // left arr
-		st->left_key = 0;
-	else if (keycode == 124) // right arr
-		st->right_key = 0;
 	return (1);
 }
 

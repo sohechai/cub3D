@@ -6,34 +6,18 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:38:43 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/16 00:06:41 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 19:51:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 // a copier dans ft_free
 
-void	free_sprites(t_sprites **firsts)
-{
-	t_sprites *now;
-	t_sprites *next;
-
-	now = (*firsts);
-	while (now != NULL)
-	{
-		next = now->next;
-		free(now);
-		now = next;
-	}
-	(*firsts) = NULL;
-}
-
 static void	texture_put(t_cubed *st, t_sprites *sprite)
 {
 	int	index;
 	int index_sprite;
 
-	printf("allo7\n");
 	index = sprite->y * st->img->sizeline
 	+ sprite->x * st->img->bpp / 8;
 	index_sprite = sprite->texty * st->sprit->sizeline + sprite->textx
@@ -51,7 +35,6 @@ void		sprite_put(t_cubed *st, t_window *window, t_sprites *sprite)
 	int	color;
 	int	index;
 
-	printf("allo6\n");
 	d = sprite->y * st->sprit->sizeline - window->height
 	* st->sprit->sizeline / 2 + sprite->spriteheight
 	* st->sprit->sizeline / 2;
@@ -66,26 +49,18 @@ void		sprite_put(t_cubed *st, t_window *window, t_sprites *sprite)
 		texture_put(st, sprite);
 }
 
-void		set_sprite_on_img(t_cubed *st, t_sprites *now,
-			t_window *window, t_ray *ray)
+void		set_sprite_on_img(t_cubed *st, t_sprites *now, t_window *window, t_ray *ray)
 {
-	printf("allo2\n");
 	now->x = now->drawstart_x;
-	printf("%d et %d\n", now->x, now->drawend_x);
 	while (now->x < now->drawend_x)
 	{
-		printf("allo3\n");
 		if (now->transformy > 0 && now->transformy < ray->z_buffer[now->x])
 		{
-			printf("allo4\n");
 			now->y = now->drawstart_y;
-			now->textx = (int)(st->sprit->sizeline
-			* (now->x - (-now->spritewidth / 2
-			+ now->spritescreenx)) * st->sprit->width
-			/ now->spritewidth) / st->sprit->sizeline;
+			now->textx = (int)(st->sprit->sizeline * (now->x - (-now->spritewidth / 2 +
+						now->spritescreenx)) * st->sprit->width / now->spritewidth) / st->sprit->sizeline;
 			while (now->y < now->drawend_y)
 			{
-				printf("allo5\n");
 				sprite_put(st, window, now);
 				now->y++;
 			}
@@ -96,7 +71,6 @@ void		set_sprite_on_img(t_cubed *st, t_sprites *now,
 
 void		size_sprite(t_sprites *now, t_window *window)
 {
-	printf("allo1\n");
 	now->spriteheight = abs((int)(window->height / now->transformy));
 	now->drawstart_y = -now->spriteheight / 2 + window->height / 2;
 	if (now->drawstart_y < 0)
@@ -129,13 +103,13 @@ void		ft_drawsprite(t_cubed *st, t_window *window, t_ray *ray)
 	t_sprites	*now;
 
 	now = st->firstsprite;
+	int i = 0;
 	while (now != NULL)
 	{
-		printf("donnée = %d et %d\n", now->spritex, now->spritey);
-		projection_sprite(window, now, st);
+		projection_sprite(st, window, now);
 		size_sprite(now, window);
 		set_sprite_on_img(st, now, window, ray);
 		now = now->next;
 	}
-	free_sprites(&st->firstsprite);
+	ft_freesprites(&st->firstsprite);
 }

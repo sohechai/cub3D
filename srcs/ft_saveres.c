@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 02:09:30 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/17 23:46:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 
 void		ft_resizeres(t_cubed *st, t_window *window)
 {
-	if (st->window->width > 2560 || st->window->width < 0)
+	if (st->window->width > 1780 || st->window->width < 0)
 	{
-		st->window->width = 2560;
-		ft_putstr("\e[7mNote:\e[00m\nWidth have been resized at 2560\n\n");
+		st->window->width = 1780;
+		ft_putstr("\e[7mNote:\e[00m\nWidth have been resized at 1080\n\n");
 	}
 	else if (st->window->width < 150)
 	{
 		st->window->width = 150;
 		ft_putstr("\e[7mNote:\e[00m\nWidth have been resized at 150\n\n");
 	}
-	if (st->window->height > 1520 || st->window->height < 0)
+	if (st->window->height > 1000 || st->window->height < 0)
 	{
-		st->window->height = 1520;
-		ft_putstr("\e[7mNote:\e[00m\nHeight have been resized at 1520\n\n");
+		st->window->height = 1000;
+		ft_putstr("\e[7mNote:\e[00m\nHeight have been resized at 1024\n\n");
 	}
 	else if (st->window->height < 150)
 	{

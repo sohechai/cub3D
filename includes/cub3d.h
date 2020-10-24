@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/16 00:06:41 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 19:51:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,7 @@ void		ft_clearstruct(t_cubed *st);
 void		ft_keymanagement(t_cubed *st);
 void		ft_createnewsprite(t_cubed *st, t_ray *ray);
 void		ft_drawsprite(t_cubed *st, t_window *window, t_ray *ray);
+void		ft_freesprites(t_sprites **firsts);
 int			move_forward(t_cubed *st);
 int			move_backward(t_cubed *st);
 int			move_right(t_cubed *st);

@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:32:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/15 23:21:04 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/17 19:33:11 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void        ft_draw3(t_cubed *st, t_ray *ray)
 {
 	ray->hit = 0;
 	// ray->side = 0;
-	while (ray->hit != 1)
+	while (ray->hit == 0)
 	{
 		if (ray->sidedistx < ray->sidedisty)
 		{
@@ -85,8 +85,7 @@ void        ft_draw3(t_cubed *st, t_ray *ray)
 			else
 				ray->side = 3;
 		}
-		if (st->map[ray->mapy][ray->mapx] == '1' &&
-			st->map[ray->mapy][ray->mapx] != '2')
+		if (st->map[ray->mapy][ray->mapx] == '1')
 		{
 			ray->hit = 1;
 		}

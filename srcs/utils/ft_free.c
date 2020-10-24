@@ -6,11 +6,26 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 00:16:56 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 15:51:25 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 19:52:19 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void		ft_freesprites(t_sprites **firsts)
+{
+	t_sprites *now;
+	t_sprites *next;
+
+	now = (*firsts);
+	while (now != NULL)
+	{
+		next = now->next;
+		free(now);
+		now = next;
+	}
+	(*firsts) = NULL;
+}
 
 void		ft_freewindow(t_window *window)
 {
@@ -31,16 +46,15 @@ void		ft_freeimg(t_img *img, t_window *window)
 
 void		ft_clearstruct(t_cubed *st)
 {
-	// clear_map(st);
 	ft_freeimg(st->north, st->window);
-	ft_freeimg(st->north, st->window);
-	ft_freeimg(st->west, st->window);
+	ft_freeimg(st->south, st->window);
 	ft_freeimg(st->east, st->window);
+	ft_freeimg(st->west, st->window);
 	ft_freeimg(st->sprit, st->window);
 	ft_freeimg(st->img, st->window);
-	// if (st->sprites_head)
-	// 	free_sprites(&st->sprites_head);
-	// free(st->sprites_head);
+	if (st->firstsprite)
+		ft_freesprites(&st->firstsprite);
+	free(st->firstsprite);
 	ft_freewindow(st->window);
 	free(st);
 }
@@ -48,11 +62,11 @@ void		ft_clearstruct(t_cubed *st)
 void		ft_exitgame(t_cubed *st)
 {
 	ft_clearstruct(st);
-	exit(1);
+	exit(EXIT_SUCCESS);
 }
 
 int			ft_destroywindow(t_cubed *st, t_window *window)
 {
 	ft_exitgame(st);
-	return (1);
+	return (0);
 }

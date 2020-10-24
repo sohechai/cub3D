@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:06:33 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/15 23:17:38 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 20:33:09 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,45 @@ int     main(int argc, char **argv)
 		st->check = 1;
 		exit(EXIT_FAILURE);
 	}
-	if (argc > 3 || argc < 2)
+	if (argc < 2 || argc > 3)
 	{
 		st->check = 1;
 		ft_clearstruct(st);
 		ft_putstr("\e[41mError\e[00m\n\n- Please add a map file\n");
 		exit (EXIT_FAILURE);
-		return (0);
 	}
-	if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
+	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
+	{
+		dprintf(1, "coucou1\n");
 		ft_savecub(st, argv[1]);
+	}
+	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") == NULL)
+	{
+		st->check = 1;
+		printf("coucou2\n");
+		ft_clearstruct(st);
+		ft_putstr("\e[41mError\e[00m\n\n- Map must end by '.cub'\n");
+		exit (EXIT_FAILURE);
+	}
+	// else if (argc == 3 && ft_strncmp(argv[2], "--save", 6) == 0 &&
+	// 		ft_searchdotcub(argv[1], ".cub") != NULL)
+	// {
+	// 	//ft_savecub(st, argv[1]);
+	// 	printf("save file\n");
+	// 	exit (EXIT_FAILURE);
+	// }
 	else
 	{
 		st->check = 1;
-		ft_putstr("\e[41mError\e[00m\n\n- Map must end by '.cub'\n");
-		return (0);
+		ft_clearstruct(st);
+		ft_putstr("\e[41mError\e[00m\n\n- 3rd argument must be --save'");
+		ft_putstr("to make a screen of the game");
+		exit (EXIT_FAILURE);
 	}
 	if (st->check == 0)
-    	ft_openwindow(st, st->window, st->img);
+    {
+		printf("%d\n", ft_strncmp(argv[2], "--save", 6));
+		ft_openwindow(st, st->window, st->img);
+	}
     return (EXIT_SUCCESS);
 }
