@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 23:46:53 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 15:57:43 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ void		ft_calcultexture(t_cubed *st, t_ray *ray)
 	while (ray->y <= ray->drawend)
 	{
 		ft_settexture(st, texture, ray);
-		// st->img->img_data[ray->drawstart++ * ray->x + ray->x] = st->img->colori;
 	}
 }

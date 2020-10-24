@@ -6,39 +6,11 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 02:11:47 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// int			ft_longestandnbofline(t_cubed *st, char *str)
-// {
-// 	int		count;
-// 	int		longestline;
-// 	int		nbofline;
-// 	int		i;
-
-// 	st->lenmax = 0;
-// 	longestline = 0;
-// 	nbofline = 0;
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '\n' || str[i + 1] == '\0')
-// 		{
-// 			if (count > longestline)
-// 				longestline = count;
-// 			if (str[i] == '\n')
-// 				nbofline++;
-// 			count = 0;
-// 		}
-// 		count++;
-// 		i++;
-// 	}
-// 	st->nbofline = nbofline;
-// 	return (longestline + 1);
-// }
 
 int		ft_longestline(t_cubed *st, char *str)
 {

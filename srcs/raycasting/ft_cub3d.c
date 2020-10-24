@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:32:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/17 19:33:11 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void        ft_draw1(t_cubed *st, t_window *window, t_ray *ray)
 	ray->mapy = (int)st->posy;
 	ray->lineheight = 0;
 	ray->y = 0;
-	// ray->deltadistx = sqrt((double)1 + (ray->raydiry * ray->raydiry) / (ray->raydirx * ray->raydirx));
-	// ray->deltadisty = sqrt((double)1 + (ray->raydirx * ray->raydirx) / (ray->raydiry * ray->raydiry));
 }
 
 void        ft_draw2(t_cubed *st, t_ray *ray)
@@ -64,7 +62,6 @@ void        ft_draw2(t_cubed *st, t_ray *ray)
 void        ft_draw3(t_cubed *st, t_ray *ray)
 {
 	ray->hit = 0;
-	// ray->side = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->sidedistx < ray->sidedisty)
@@ -116,32 +113,7 @@ void        ft_draw4(t_cubed *st, t_ray *ray, t_window *window, t_img *img)
 		ray->wallx = st->posx + ray->perpwalldist * ray->raydirx;
 	ray->wallx -= floor(ray->wallx);
 	ft_calcultexture(st, ray);
-	// // ICIII
 	ft_setcolor(st, ray, img);
-}
-
-void        ft_setdata(t_cubed *st)
-{
-	if (st->diry == -1.0 && st->dirx == 0.0)
-	{
-		st->planex = 0.66;
-		st->planey = 0;
-	}
-	if (st->dirx == 0.0 && st->diry == 1.0)
-	{
-		st->planex = -0.66;
-		st->planey = 0;
-	}
-	if (st->dirx == 1.0 && st->diry == 0.0)
-	{
-		st->planex = 0;
-		st->planey = 0.66;
-	}
-	if (st->dirx == -1.0 && st->diry == 0.0)
-	{
-		st->planex = 0;
-		st->planey = -0.66;
-	}
 }
 
 int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
@@ -154,7 +126,6 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 		exit(EXIT_FAILURE);
 	}
 	ft_bzero(ray.z_buffer, sizeof(double) * window->width);
-	// ft_setdata(st);
     while (ray.x < st->window->width)
 	{
 		ft_draw1(st, window, &ray);
@@ -166,7 +137,13 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 	if (st->firstsprite != NULL)
 		ft_drawsprite(st, window, &ray);
 	free(ray.z_buffer);
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, st->img->img_ptr, 0, 0);
+	if (st->screen == 1)
+	{
+		ft_saveimage(st);
+		ft_exitgame(st);
+	}
+	else
+		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, st->img->img_ptr, 0, 0);
 	return (1);
 }
 

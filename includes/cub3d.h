@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 16:12:59 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/24 19:51:39 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:05:08 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct	s_cubed
 	t_img			*sprit;
 	t_sprites		*firstsprite;
 
+	int				screen;
 // parsing
 
 	double			posx;
@@ -206,7 +207,6 @@ char		*ft_searchdotcub(const char *s1, const char *s2);
 static int	ft_key(int keycode, t_cubed *st);
 
 int			main(int argc, char **argv);
-int			main_loop(t_cubed *st, t_window *window, t_ray *ray);
 int     	ft_openwindow(t_cubed *st, t_window *window, t_img *img);
 int			ft_savecub(t_cubed *st, char *filemap);
 int			ft_atoiwithst(const char *str, t_cubed *st);
@@ -253,6 +253,7 @@ void		ft_keymanagement(t_cubed *st);
 void		ft_createnewsprite(t_cubed *st, t_ray *ray);
 void		ft_drawsprite(t_cubed *st, t_window *window, t_ray *ray);
 void		ft_freesprites(t_sprites **firsts);
+void		ft_saveimage(t_cubed *st);
 int			move_forward(t_cubed *st);
 int			move_backward(t_cubed *st);
 int			move_right(t_cubed *st);

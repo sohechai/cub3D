@@ -6,13 +6,11 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/17 23:46:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:15:56 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// TODO verifier s'il faut gerer les cas de int max pour les res
 
 void		ft_resizeres(t_cubed *st, t_window *window)
 {

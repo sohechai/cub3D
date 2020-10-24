@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 20:32:54 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:15:56 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ char	*ft_searchdotcub(const char *s1, const char *s2)
 	return (NULL);
 }
 
-//TODO faire une fonction qui free a chaque fois que ca return (0);
-// si ca return (0); free ce qu'il faut free;
-
 int		ft_checkfiles(t_cubed *st)
 {
 	int		x = 0;
@@ -59,11 +56,6 @@ int		ft_checkfiles(t_cubed *st)
 		return (0);
 	st->map = ft_split(st->finalmap, '\n');
 	free(st->finalmap);
-	// while (st->map[x] != 0)
-	// {
-	// 	printf("%s\n", st->map[x]);
-	// 	++x;
-	// }
 	return (1);
 }
 

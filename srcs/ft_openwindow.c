@@ -6,31 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 19:45:20 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:05:08 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	ft_keymanagement(t_cubed *st)
-{
-	if (st->a_key == 1)
-		move_left(st);
-	else if (st->s_key == 1)
-		move_backward(st);
-	else if (st->d_key == 1)
-		move_right(st);
-	else if (st->w_key == 1)
-		move_forward(st);
-	else if (st->left_key == 1)
-		rotate_left(st);
-	else if (st->right_key == 1)
-		rotate_right(st);
-	if (st->esc_key == 1)
-		ft_exitgame(st);
-}
-
-static	int		ft_keyon(int keycode, t_cubed *st)
+static	int		ft_key(int keycode, t_cubed *st)
 {
 	if (keycode == 53) // ESC
 		ft_exitgame(st);
@@ -49,18 +31,6 @@ static	int		ft_keyon(int keycode, t_cubed *st)
 	return (1);
 }
 
-// int				close_win(t_cubed *st)
-// {
-// 	mlx_destroy_window(st->mlx, st->win);
-// 	ft_putstr("Exiting");
-// 	return (0);
-// }
-
-// int				ft_close(t_cubed *st)
-// {
-// 	exit(1);
-// }
-
 int     ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 {
     if ((st->window->mlx_ptr = mlx_init()) == NULL)
@@ -72,14 +42,9 @@ int     ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 		return (EXIT_FAILURE);
 	st->img->img_data = (int *)mlx_get_data_addr(st->img->img_ptr,
 	&st->img->bpp, &st->img->sizeline, &st->img->endian);
-    // st->img->img_data = mlx_get_data_addr(st->img->img_ptr,
-	// 	&(st->img->bpp), &(st->img->sizeline), &(st->img->endian));
 	ft_draw(st, st->window, st->ray, img);
-	// TODO revoir en dessous
-	mlx_hook(st->window->win_ptr, 2, 0, ft_keyon, st);
-	// mlx_hook(st->window->win_ptr, 3, 1, ft_keyoff, st);
+	mlx_hook(st->window->win_ptr, 2, 0, ft_key, st);
 	mlx_hook(st->window->win_ptr, 17, 0, ft_destroywindow, st);
-	// mlx_loop_hook(st->window->mlx_ptr, main_loop, st);
 	mlx_loop(st->window->mlx_ptr);
 	return (1);
 }

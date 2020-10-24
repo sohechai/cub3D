@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:57:53 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 15:08:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:19:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int			ft_savergbdata(t_cubed *st)
 				return (1);
 		}
 	}
-	//return (0);
 }
 
 int			ft_save_ceilingcolor(t_cubed *st)
@@ -122,9 +121,5 @@ int		ft_savecolor(t_cubed *st)
 		return (0);
 	}
 	else
-	{
-		printf("colorc = %d\n", st->ceilingcol);
-		printf("colorf = %d\n", st->floorcol);
 		return (1);
-	}
 }

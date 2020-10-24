@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:32:11 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 02:07:57 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:17:36 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_checktabcase(t_cubed *st)
 		j = 0;
 		i++;
 	}
+	free(st->tab);
 	return (1);
 }
 
@@ -50,7 +51,6 @@ int		ft_checkdouble(t_cubed *st)
 			st->sizetab++;
 		x++;
 	}
-	//TODO free v
 	if (!(st->tab = malloc(sizeof(int) * st->sizetab)))
 		return (0);
 	x = 0;

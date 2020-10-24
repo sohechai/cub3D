@@ -6,11 +6,35 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 00:29:49 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/15 23:57:41 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:06:11 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void        ft_setdata(t_cubed *st)
+{
+	if (st->diry == -1.0 && st->dirx == 0.0)
+	{
+		st->planex = 0.66;
+		st->planey = 0;
+	}
+	if (st->dirx == 0.0 && st->diry == 1.0)
+	{
+		st->planex = -0.66;
+		st->planey = 0;
+	}
+	if (st->dirx == 1.0 && st->diry == 0.0)
+	{
+		st->planex = 0;
+		st->planey = 0.66;
+	}
+	if (st->dirx == -1.0 && st->diry == 0.0)
+	{
+		st->planex = 0;
+		st->planey = -0.66;
+	}
+}
 
 int		ft_checkmapcar(t_cubed *st)
 {

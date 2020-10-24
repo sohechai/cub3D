@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 20:53:15 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/12 01:32:12 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,5 @@ int		ft_maperror(t_cubed *st)
 		ft_putstr("-Map must contain only one player position\n");
 		return (0);
 	}
-	// if (ft_checkiswallaround(st) == 0)
-	// {
-	// 	ft_putstr("\e[41mError\e[00m\n\n");
-	// 	ft_putstr("Map is open:\n\n");
-	// 	ft_putstr("-Map must be surrouded by wall\n");
-	// 	return (0);
-	// }
 	return (1);
 }

@@ -6,14 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:38:43 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/24 19:51:39 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-// a copier dans ft_free
 
-static void	texture_put(t_cubed *st, t_sprites *sprite)
+void		ft_putspritetexture(t_cubed *st, t_sprites *sprite)
 {
 	int	index;
 	int index_sprite;
@@ -29,7 +28,7 @@ static void	texture_put(t_cubed *st, t_sprites *sprite)
 	st->sprit->img_data[index_sprite + 2];
 }
 
-void		sprite_put(t_cubed *st, t_window *window, t_sprites *sprite)
+void		ft_putsprite1(t_cubed *st, t_window *window, t_sprites *sprite)
 {
 	int	d;
 	int	color;
@@ -46,10 +45,10 @@ void		sprite_put(t_cubed *st, t_window *window, t_sprites *sprite)
 	+ st->sprit->img_data[index + 1]
 	+ st->sprit->img_data[index + 2];
 	if (color != 0)
-		texture_put(st, sprite);
+		ft_putspritetexture(st, sprite);
 }
 
-void		set_sprite_on_img(t_cubed *st, t_sprites *now, t_window *window, t_ray *ray)
+void		ft_putsprite(t_cubed *st, t_sprites *now, t_window *window, t_ray *ray)
 {
 	now->x = now->drawstart_x;
 	while (now->x < now->drawend_x)
@@ -61,7 +60,7 @@ void		set_sprite_on_img(t_cubed *st, t_sprites *now, t_window *window, t_ray *ra
 						now->spritescreenx)) * st->sprit->width / now->spritewidth) / st->sprit->sizeline;
 			while (now->y < now->drawend_y)
 			{
-				sprite_put(st, window, now);
+				ft_putsprite1(st, window, now);
 				now->y++;
 			}
 		}
@@ -69,7 +68,7 @@ void		set_sprite_on_img(t_cubed *st, t_sprites *now, t_window *window, t_ray *ra
 	}
 }
 
-void		size_sprite(t_sprites *now, t_window *window)
+void		ft_sizesprite(t_sprites *now, t_window *window)
 {
 	now->spriteheight = abs((int)(window->height / now->transformy));
 	now->drawstart_y = -now->spriteheight / 2 + window->height / 2;
@@ -88,7 +87,7 @@ void		size_sprite(t_sprites *now, t_window *window)
 		now->drawend_x = window->width - 1;
 }
 
-void		projection_sprite(t_cubed *st, t_window *window, t_sprites *now)
+void		ft_setsprite(t_cubed *st, t_window *window, t_sprites *now)
 {
 	now->spritex = now->sprite->x - (st->posx - 0.5);
 	now->spritey = now->sprite->y - (st->posy - 0.5);
@@ -106,9 +105,9 @@ void		ft_drawsprite(t_cubed *st, t_window *window, t_ray *ray)
 	int i = 0;
 	while (now != NULL)
 	{
-		projection_sprite(st, window, now);
-		size_sprite(now, window);
-		set_sprite_on_img(st, now, window, ray);
+		ft_setsprite(st, window, now);
+		ft_sizesprite(now, window);
+		ft_putsprite(st, now, window, ray);
 		now = now->next;
 	}
 	ft_freesprites(&st->firstsprite);

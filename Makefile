@@ -6,7 +6,7 @@
 #    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/10/24 16:29:24 by sofiahechai      ###   ########lyon.fr    #
+#    Updated: 2020/10/24 20:49:25 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC 	=	./srcs/main.c\
 			./srcs/utils/ft_free.c\
 			./srcs/utils/ft_initstruct.c\
 			./srcs/utils/ft_initstruct2.c\
+			./srcs/utils/ft_saveimage.c\
 
 FLAGS 	=	-Wall -Wextra -Werror
 
