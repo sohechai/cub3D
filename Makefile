@@ -6,7 +6,7 @@
 #    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/10/24 22:48:57 by sofiahechai      ###   ########lyon.fr    #
+#    Updated: 2020/10/25 19:38:10 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 	=	cub3d
 
 HEADER 	=	./includes/cub3d.h
 
-MINILIB = 	./minilibx/ -framework OpenGL -framework AppKit
+MINILIB = 	./minilibx/ -lX11 -lXext -L minilibx/ -lmlx -lm -pthread -lbsd
 
 SRC 	=	./srcs/main.c\
 			./srcs/ft_openwindow.c\
