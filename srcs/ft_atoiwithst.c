@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoiwithst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:26:35 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/28 16:04:43 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/cub3d.h"
 

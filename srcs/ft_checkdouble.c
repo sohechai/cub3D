@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:32:11 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:17:36 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,15 @@ int		ft_checktabcase(t_cubed *st)
 
 int		ft_checkdouble(t_cubed *st)
 {
-	int 	x;
+	int		x;
 	int		i;
 
-	x = 0;
+	x = -1;
 	i = 0;
-	st->sizetab = 0;
-	while (st->checkdouble[x] != 0)
+	while (st->checkdouble[++x] != 0)
 	{
 		if (ft_isalpha(st->checkdouble[x][0]) == 1)
 			st->sizetab++;
-		x++;
 	}
 	if (!(st->tab = malloc(sizeof(int) * st->sizetab)))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 23:57:19 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/13 16:00:51 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 22:44:12 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,20 @@ void		ft_putpixel(t_img *img, int x, int y, int color)
 	img->img_data[y * img->sizeline + x * img->bpp / 8 + 2] = b;
 }
 
-void        ft_setcolor(t_cubed *st, t_ray *ray, t_img *img)
+void		ft_setcolor(t_cubed *st, t_ray *ray, t_img *img)
 {
-	int     y;
+	int		x;
 
-    y = 0;
-    while (y < ray->drawstart)
-		ft_putpixel(st->img, ray->x, y++, st->ceilingcol);
-	y = ray->drawend + 1;
-	while (y < st->window->height)
-		ft_putpixel(st->img, ray->x, y++, st->floorcol);
+	x = 0;
+	while (x < ray->drawstart)
+	{
+		ft_putpixel(st->img, ray->x, x, st->ceilingcol);
+		x++;
+	}
+	x = ray->drawend + 1;
+	while (x < st->window->height)
+	{
+		ft_putpixel(st->img, ray->x, x, st->floorcol);
+		x++;
+	}
 }

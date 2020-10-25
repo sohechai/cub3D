@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:46:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:15:28 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ft_lineuntiln(char *str, t_cubed *st)
 	}
 }
 
-void	ft_delete_n_spaces(t_cubed *st, char *str)
+void		ft_delete_n_spaces(t_cubed *st, char *str)
 {
 	int		i;
 	int		j;
@@ -53,7 +53,7 @@ void	ft_delete_n_spaces(t_cubed *st, char *str)
 	j = 0;
 }
 
-int		ft_msgnomapfound(t_cubed *st, char *str)
+int			ft_msgnomapfound(t_cubed *st, char *str)
 {
 	if (str[0] == '\0')
 	{
@@ -65,7 +65,7 @@ int		ft_msgnomapfound(t_cubed *st, char *str)
 	return (1);
 }
 
-int		ft_gotomap(t_cubed *st)
+int			ft_gotomap(t_cubed *st)
 {
 	int		i;
 	int		x;

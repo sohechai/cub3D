@@ -6,13 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:49:40 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/24 20:59:12 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 22:52:55 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_file(t_img *img, int fd)
+void		ft_file(t_img *img, int fd)
 {
 	int	file_size;
 	int	pixel_data_offset;
@@ -25,7 +25,7 @@ void	ft_file(t_img *img, int fd)
 	write(fd, &pixel_data_offset, 4);
 }
 
-void	ft_image(t_cubed *st, t_img *img, int fd)
+void		ft_image(t_cubed *st, t_img *img, int fd)
 {
 	int	header_size;
 	int	plane;
@@ -44,7 +44,7 @@ void	ft_image(t_cubed *st, t_img *img, int fd)
 	write(fd, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16);
 }
 
-void	ft_bitmaponimage(t_cubed *st, t_img *img, int fd)
+void		ft_bitmaponimage(t_cubed *st, t_img *img, int fd)
 {
 	int	x;
 	int y;
@@ -77,10 +77,11 @@ void		ft_saveimage(t_cubed *st)
 
 	if ((fd = open("screenshot.bmp", O_CREAT | O_RDWR)) < 0)
 	{
-        ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("\e[41mError\e[00m\n\n");
 		ft_putstr("- Impossible to create the bitmap file\n\n");
-        ft_exitgame(st);
-    }
+		ft_exitgame(st);
+	}
+	ft_putstr("Saving screenshot..\n");
 	ft_file(st->img, fd);
 	ft_image(st, st->img, fd);
 	ft_bitmaponimage(st, st->img, fd);

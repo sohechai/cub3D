@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:14:38 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/17 15:46:00 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 21:54:47 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void		ft_createnewsprite(t_cubed *st, t_ray *ray)
 		}
 		now = now->next;
 	}
-	distance = (st->posx - new->x) * (st->posx - new->x) + (st->posy - new->y) * (st->posy - new->y);
+	distance = (st->posx - new->x) * (st->posx - new->x) +
+				(st->posy - new->y) * (st->posy - new->y);
 	new_sprite = ft_initsprites(new, distance);
 	sorted_insert(&(st->firstsprite), new_sprite);
 }

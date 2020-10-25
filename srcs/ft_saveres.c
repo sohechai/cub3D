@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 22:03:05 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:15:56 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void		ft_resizeres(t_cubed *st, t_window *window)
 	}
 }
 
-int		ft_checkres(t_cubed *st, t_window *window)
+int			ft_checkres(t_cubed *st, t_window *window)
 {
 	st->i = 0;
 	while (st->mapfile[st->i] != '\0')
 	{
-		if(st->mapfile[st->i] == 'R')
+		if (st->mapfile[st->i] == 'R')
 		{
 			st->i++;
 			st->window->width = ft_atoiwithst(st->mapfile, st);
@@ -62,7 +62,7 @@ int		ft_checkres(t_cubed *st, t_window *window)
 	return (0);
 }
 
-int		ft_saveres(t_cubed *st)
+int			ft_saveres(t_cubed *st)
 {
 	if (ft_checkres(st, st->window) == 0)
 	{

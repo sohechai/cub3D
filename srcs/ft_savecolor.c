@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:57:53 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:19:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			ft_save_ceilingcolor(t_cubed *st)
 	st->i = 0;
 	while (st->mapfile[st->i] != '\0')
 	{
-		if(st->mapfile[st->i] == 'C')
+		if (st->mapfile[st->i] == 'C')
 		{
 			st->i++;
 			ft_jumpspaces(st);
@@ -78,12 +78,12 @@ int			ft_save_ceilingcolor(t_cubed *st)
 		return (0);
 }
 
-int    ft_save_floorcolor(t_cubed *st)
+int			ft_save_floorcolor(t_cubed *st)
 {
 	st->i = 0;
 	while (st->mapfile[st->i] != '\0')
 	{
-		if(st->mapfile[st->i] == 'F')
+		if (st->mapfile[st->i] == 'F')
 		{
 			st->i++;
 			ft_jumpspaces(st);
@@ -107,7 +107,7 @@ int    ft_save_floorcolor(t_cubed *st)
 		return (0);
 }
 
-int		ft_savecolor(t_cubed *st)
+int			ft_savecolor(t_cubed *st)
 {
 	if (ft_save_ceilingcolor(st) == 0 || ft_save_floorcolor(st) == 0)
 	{

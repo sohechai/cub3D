@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 22:57:15 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/17 19:58:45 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:11:09 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void		ft_initst_02(t_cubed *st)
 	st->lenuntiln = 0;
 	st->lenmax = 0;
 	st->nbofline = 0;
-	st->k = 0;
 }
 
 void		ft_initst_01(t_cubed *st)
 {
 	ft_initst_02(st);
+	st->k = 0;
 	st->l = 0;
 	st->esc_key = 0;
 	st->w_key = 0;
@@ -84,10 +84,11 @@ void		ft_initst_01(t_cubed *st)
 	st->right_key = 0;
 	st->posx = 0;
 	st->posy = 0;
-	st-> dirx = 0;
+	st->dirx = 0;
 	st->diry = 0;
 	st->planex = 0;
 	st->planey = 0;
+	st->player = 0;
 	st->movespeed = 0.25;
 	st->rotspeed = 0.15;
 	st->rgb->rgb.r = 0;
@@ -95,7 +96,7 @@ void		ft_initst_01(t_cubed *st)
 	st->rgb->rgb.b = 0;
 }
 
-t_cubed     *ft_initstruct(void)
+t_cubed		*ft_initstruct(void)
 {
 	t_cubed *st;
 

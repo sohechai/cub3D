@@ -6,13 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 00:29:49 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:06:11 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void        ft_setdata(t_cubed *st)
+void		ft_setdata(t_cubed *st)
 {
 	if (st->diry == -1.0 && st->dirx == 0.0)
 	{
@@ -36,7 +36,7 @@ void        ft_setdata(t_cubed *st)
 	}
 }
 
-int		ft_checkmapcar(t_cubed *st)
+int			ft_checkmapcar(t_cubed *st)
 {
 	int		x;
 	int		y;
@@ -47,7 +47,7 @@ int		ft_checkmapcar(t_cubed *st)
 	{
 		while (st->worldmap[x][y] != '\0')
 		{
-			if(st->worldmap[x][y] != '0' && st->worldmap[x][y] != '1' &&
+			if (st->worldmap[x][y] != '0' && st->worldmap[x][y] != '1' &&
 				st->worldmap[x][y] != '2' && st->worldmap[x][y] != 'N' &&
 				st->worldmap[x][y] != 'S' && st->worldmap[x][y] != 'E' &&
 				st->worldmap[x][y] != 'W' && st->worldmap[x][y] != 'X')
@@ -60,7 +60,7 @@ int		ft_checkmapcar(t_cubed *st)
 	return (1);
 }
 
-void	ft_configpos(t_cubed *st, char c)
+void		ft_configpos(t_cubed *st, char c)
 {
 	if (c == 'N')
 	{
@@ -85,33 +85,31 @@ void	ft_configpos(t_cubed *st, char c)
 	ft_setdata(st);
 }
 
-int		ft_checkplayer(t_cubed *st)
+int			ft_checkplayer(t_cubed *st)
 {
 	int		x;
 	int		y;
-	int		player;
 
 	x = 0;
 	y = 0;
-	player = 0;
 	while (st->worldmap[y] != 0)
 	{
 		while (st->worldmap[y][x] != '\0')
 		{
-			if(st->worldmap[y][x] == 'N' || st->worldmap[y][x] == 'S' ||
+			if (st->worldmap[y][x] == 'N' || st->worldmap[y][x] == 'S' ||
 				st->worldmap[y][x] == 'E' || st->worldmap[y][x] == 'W')
 			{
 				ft_configpos(st, st->worldmap[y][x]);
 				st->posx = (double)x - 0.5;
 				st->posy = (double)y - 0.5;
-				player++;
+				st->player++;
 			}
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	if (player != 1)
+	if (st->player != 1)
 		return (0);
 	return (1);
 }

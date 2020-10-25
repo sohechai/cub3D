@@ -6,15 +6,15 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 20:32:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 22:33:28 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void        ft_draw1(t_cubed *st, t_window *window, t_ray *ray)
+void		ft_draw1(t_cubed *st, t_window *window, t_ray *ray)
 {
-    ray->camerax = 2 * ray->x / (double)st->window->width - 1;
+	ray->camerax = 2 * ray->x / (double)st->window->width - 1;
 	ray->raydirx = st->dirx + st->planex * ray->camerax;
 	ray->raydiry = st->diry + st->planey * ray->camerax;
 	if (ray->raydiry == 0)
@@ -35,9 +35,9 @@ void        ft_draw1(t_cubed *st, t_window *window, t_ray *ray)
 	ray->y = 0;
 }
 
-void        ft_draw2(t_cubed *st, t_ray *ray)
+void		ft_draw2(t_cubed *st, t_ray *ray)
 {
-    if (ray->raydirx < 0)
+	if (ray->raydirx < 0)
 	{
 		ray->stepx = -1;
 		ray->sidedistx = (st->posx - ray->mapx) * ray->deltadistx;
@@ -57,11 +57,11 @@ void        ft_draw2(t_cubed *st, t_ray *ray)
 		ray->stepy = 1;
 		ray->sidedisty = (ray->mapy + 1.0 - st->posy) * ray->deltadisty;
 	}
+	ray->hit = 0;
 }
 
-void        ft_draw3(t_cubed *st, t_ray *ray)
+void		ft_draw3(t_cubed *st, t_ray *ray)
 {
-	ray->hit = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->sidedistx < ray->sidedisty)
@@ -83,22 +83,20 @@ void        ft_draw3(t_cubed *st, t_ray *ray)
 				ray->side = 3;
 		}
 		if (st->map[ray->mapy][ray->mapx] == '1')
-		{
 			ray->hit = 1;
-		}
 		else if (st->map[ray->mapy][ray->mapx] == '2')
-		{
 			ft_createnewsprite(st, ray);
-		}
 	}
 }
 
-void        ft_draw4(t_cubed *st, t_ray *ray, t_window *window, t_img *img)
+void		ft_draw4(t_cubed *st, t_ray *ray, t_window *window, t_img *img)
 {
 	if (ray->side == 0 || ray->side == 1)
-		ray->perpwalldist = (ray->mapx - st->posx + (1 - ray->stepx) / 2) / ray->raydirx;
+		ray->perpwalldist = (ray->mapx - st->posx +
+		(1 - ray->stepx) / 2) / ray->raydirx;
 	else if (ray->side == 2 || ray->side == 3)
-		ray->perpwalldist = (ray->mapy - st->posy + (1 - ray->stepy) / 2) / ray->raydiry;
+		ray->perpwalldist = (ray->mapy - st->posy +
+		(1 - ray->stepy) / 2) / ray->raydiry;
 	ray->lineheight = (int)(window->height / ray->perpwalldist);
 	ray->z_buffer[ray->x] = ray->perpwalldist;
 	ray->drawstart = -ray->lineheight / 2 + window->height / 2;
@@ -116,7 +114,7 @@ void        ft_draw4(t_cubed *st, t_ray *ray, t_window *window, t_img *img)
 	ft_setcolor(st, ray, img);
 }
 
-int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
+int			ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 {
 	ray.x = 0;
 	if (!(ray.z_buffer = (double *)malloc(sizeof(double) * window->width)))
@@ -126,12 +124,9 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 		exit(EXIT_FAILURE);
 	}
 	ft_bzero(ray.z_buffer, sizeof(double) * window->width);
-    while (ray.x < st->window->width)
+	while (ray.x < st->window->width)
 	{
-		ft_draw1(st, window, &ray);
-		ft_draw2(st, &ray);
-		ft_draw3(st, &ray);
-		ft_draw4(st, &ray, window, img);
+		ft_raycasting(st, window, &ray, img);
 		ray.x++;
 	}
 	if (st->firstsprite != NULL)
@@ -143,7 +138,7 @@ int        ft_draw(t_cubed *st, t_window *window, t_ray ray, t_img *img)
 		ft_exitgame(st);
 	}
 	else
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, st->img->img_ptr, 0, 0);
+		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+		st->img->img_ptr, 0, 0);
 	return (1);
 }
-

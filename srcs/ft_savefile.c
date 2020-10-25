@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:23:39 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:15:56 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ char	*ft_searchdotcub(const char *s1, const char *s2)
 
 int		ft_checkfiles(t_cubed *st)
 {
-	int		x = 0;
-	int		y = 0;
+	int		x;
+	int		y;
+
 	st->check = 0;
+	x = 0;
+	y = 0;
 	ft_checkdouble(st);
 	if (ft_checktabcase(st) == 0)
 	{
@@ -50,9 +53,9 @@ int		ft_checkfiles(t_cubed *st)
 	ft_saveres(st);
 	ft_savetexture(st);
 	ft_savecolor(st);
-	if(ft_gotomap(st) == 0)
+	if (ft_gotomap(st) == 0)
 		return (0);
-	if(ft_maperror(st) == 0)
+	if (ft_maperror(st) == 0)
 		return (0);
 	st->map = ft_split(st->finalmap, '\n');
 	free(st->finalmap);
@@ -61,12 +64,12 @@ int		ft_checkfiles(t_cubed *st)
 
 int		ft_savecub(t_cubed *st, char *filemap)
 {
-	int     fd;
-	int     ret;
-	char    buf[BUF_SIZE + 1];
+	int		fd;
+	int		ret;
+	char	buf[BUF_SIZE + 1];
 
 	fd = open(filemap, O_RDONLY);
-	while((ret = read(fd, buf, BUF_SIZE)) > 0)
+	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 		buf[ret] = '\0';
 	if (fd < 0)
 	{

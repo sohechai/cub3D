@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 00:25:41 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/13 02:00:36 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int		ft_savesprite(t_cubed *st, t_img *texture)
 {
 	st->i = 0;
-	if(ft_searchtexture(st->mapfile, "S ", st) != NULL)
+	if (ft_searchtexture(st->mapfile, "S ", st) != NULL)
 	{
 		st->i += 2;
 		ft_jumpspaces(st);
 		st->start = st->i;
-		if(st->mapfile[st->i] == '.' && st->mapfile[st->i + 1] == '/')
+		if (st->mapfile[st->i] == '.' && st->mapfile[st->i + 1] == '/')
 		{
-			if (ft_searchtextureEOL(st->mapfile, ".xpm", st) != NULL)
+			if (ft_searchtextureeol(st->mapfile, ".xpm", st) != NULL)
 			{
 				st->end = st->i - st->start + 4;
 				st->i += 4;

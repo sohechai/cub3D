@@ -6,13 +6,13 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 23:13:54 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int		ft_longestline(t_cubed *st, char *str)
+int			ft_longestline(t_cubed *st, char *str)
 {
 	int		count;
 	int		longestline;
@@ -35,7 +35,7 @@ int		ft_longestline(t_cubed *st, char *str)
 	return (longestline + 1);
 }
 
-int		ft_numberofline(t_cubed *st, char *str)
+int			ft_numberofline(t_cubed *st, char *str)
 {
 	int		nbofline;
 	int		i;
@@ -51,7 +51,7 @@ int		ft_numberofline(t_cubed *st, char *str)
 	return (nbofline);
 }
 
-void		ft_putlineofX(t_cubed *st)
+void		ft_putlineofx(t_cubed *st)
 {
 	st->lenmax = st->longestline;
 	while (st->lenmax >= 0)
@@ -95,16 +95,15 @@ int			ft_putxonmap(t_cubed *st, char *str)
 {
 	char	*tmp;
 
-	st->k = 0;
-	st->l = 0;
 	st->longestline = ft_longestline(st, str);
 	st->nbofline = ft_numberofline(st, str);
 	st->lenuntiln = 0;
 	st->lenmax = st->longestline;
 	tmp = ft_strdup(str);
-	if (!(st->newstr = malloc(sizeof(char) * ((st->longestline + 2) * (st->nbofline + 2)) + 1)))
+	if (!(st->newstr = malloc(sizeof(char) *
+		((st->longestline + 2) * (st->nbofline + 2)) + 1)))
 		return (0);
-	ft_putlineofX(st);
+	ft_putlineofx(st);
 	st->newstr[st->l] = '\n';
 	st->l++;
 	st->newstr[st->l] = 'X';
@@ -115,7 +114,7 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	st->l++;
 	st->newstr[st->l] = '\n';
 	st->l++;
-	ft_putlineofX(st);
+	ft_putlineofx(st);
 	st->newstr[st->l] = '\0';
 	ft_strcpy(str, st->newstr);
 	return (1);

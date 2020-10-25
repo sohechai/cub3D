@@ -6,7 +6,7 @@
 #    By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 15:39:57 by sofiahechai       #+#    #+#              #
-#    Updated: 2020/10/24 20:49:25 by sofiahechai      ###   ########lyon.fr    #
+#    Updated: 2020/10/24 22:48:57 by sofiahechai      ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,10 @@ SRC 	=	./srcs/main.c\
 			./srcs/raycasting/ft_putpixel.c\
 			./srcs/raycasting/ft_calculsprite.c\
 			./srcs/raycasting/ft_drawsprite.c\
+			./srcs/raycasting/ft_setdrawsprite.c\
+			./srcs/raycasting/ft_raycasting.c\
 			./srcs/utils/ft_free.c\
+			./srcs/utils/ft_exit.c\
 			./srcs/utils/ft_initstruct.c\
 			./srcs/utils/ft_initstruct2.c\
 			./srcs/utils/ft_saveimage.c\

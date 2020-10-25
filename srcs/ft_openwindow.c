@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:46:08 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:05:08 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,33 @@
 
 static	int		ft_key(int keycode, t_cubed *st)
 {
-	if (keycode == 53) // ESC
+	if (keycode == 53)
 		ft_exitgame(st);
-	else if (keycode == 0) // A
+	else if (keycode == 0)
 		move_left(st);
-	else if (keycode == 1) // S
+	else if (keycode == 1)
 		move_backward(st);
-	else if (keycode == 2) // D
+	else if (keycode == 2)
 		move_right(st);
-	else if (keycode == 13) // W
+	else if (keycode == 13)
 		move_forward(st);
-	else if (keycode == 123) // left arr
+	else if (keycode == 123)
 		rotate_left(st);
-	else if (keycode == 124) // right arr
+	else if (keycode == 124)
 		rotate_right(st);
 	return (1);
 }
 
-int     ft_openwindow(t_cubed *st, t_window *window, t_img *img)
+int				ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 {
-    if ((st->window->mlx_ptr = mlx_init()) == NULL)
+	if ((st->window->mlx_ptr = mlx_init()) == NULL)
 		return (EXIT_FAILURE);
-	if ((st->window->win_ptr = mlx_new_window(st->window->mlx_ptr, st->window->width, st->window->height, "Cub3d")) == NULL)
+	if ((st->window->win_ptr = mlx_new_window(st->window->mlx_ptr,
+		st->window->width, st->window->height, "Cub3d")) == NULL)
 		return (EXIT_FAILURE);
 	ft_settextures(st);
-	if ((st->img->img_ptr = mlx_new_image(st->window->mlx_ptr, st->window->width, st->window->height)) == NULL)
+	if ((st->img->img_ptr = mlx_new_image(st->window->mlx_ptr,
+		st->window->width, st->window->height)) == NULL)
 		return (EXIT_FAILURE);
 	st->img->img_data = (int *)mlx_get_data_addr(st->img->img_ptr,
 	&st->img->bpp, &st->img->sizeline, &st->img->endian);
@@ -48,4 +50,3 @@ int     ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 	mlx_loop(st->window->mlx_ptr);
 	return (1);
 }
-

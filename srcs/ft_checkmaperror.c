@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 20:53:15 by sohechai          #+#    #+#             */
-/*   Updated: 2020/10/24 21:20:22 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_issurrouded(int c, t_cubed *st, int x, int y)
 	return (0);
 }
 
-
 int		ft_checkmaperror(t_cubed *st)
 {
 	int		x;
@@ -41,7 +40,7 @@ int		ft_checkmaperror(t_cubed *st)
 	{
 		while (st->worldmap[x][y] != '\0')
 		{
-			if(ft_isposorobj(st->worldmap[x][y]) == 1)
+			if (ft_isposorobj(st->worldmap[x][y]) == 1)
 			{
 				if (ft_issurrouded('X', st, x, y) == 1)
 					return (0);
@@ -49,7 +48,7 @@ int		ft_checkmaperror(t_cubed *st)
 			y++;
 		}
 		y = 0;
-    	x++;
+		x++;
 	}
 	return (1);
 }

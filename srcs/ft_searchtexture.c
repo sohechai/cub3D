@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_searchtexture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohechai <sohechai@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 20:53:13 by sohechai          #+#    #+#             */
-/*   Updated: 2020/08/28 23:08:03 by sohechai         ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 23:27:39 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-char	*ft_searchtextureEOL(const char *s1, const char *s2, t_cubed *st)
+char	*ft_searchtextureeol(const char *s1, const char *s2, t_cubed *st)
 {
 	size_t	j;
 

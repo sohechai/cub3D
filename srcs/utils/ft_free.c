@@ -6,7 +6,7 @@
 /*   By: sofiahechaichi <sofiahechaichi@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 00:16:56 by sofiahechai       #+#    #+#             */
-/*   Updated: 2020/10/24 19:52:19 by sofiahechai      ###   ########lyon.fr   */
+/*   Updated: 2020/10/24 22:50:59 by sofiahechai      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void		ft_freeimg(t_img *img, t_window *window)
 	free(img);
 }
 
-
 void		ft_clearstruct(t_cubed *st)
 {
 	ft_freeimg(st->north, st->window);
@@ -57,16 +56,4 @@ void		ft_clearstruct(t_cubed *st)
 	free(st->firstsprite);
 	ft_freewindow(st->window);
 	free(st);
-}
-
-void		ft_exitgame(t_cubed *st)
-{
-	ft_clearstruct(st);
-	exit(EXIT_SUCCESS);
-}
-
-int			ft_destroywindow(t_cubed *st, t_window *window)
-{
-	ft_exitgame(st);
-	return (0);
 }
