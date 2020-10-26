@@ -12,10 +12,25 @@
 
 #include "../includes/cub3d.h"
 
+int			ft_sortsortmain(t_cubed *st)
+{
+	st->check = 1;
+	ft_clearstruct(st);
+	ft_putstr("\e[41mError\e[00m\n\n- 3rd argument must be '--save'");
+	ft_putstr("to make a screenshot of the game\n\n");
+	exit(EXIT_FAILURE);
+}
+
 int			ft_sortmain(int argc, char **argv, t_cubed *st)
 {
 	if (argc == 2 && ft_searchdotcub(argv[1], ".cub") != NULL)
-		ft_savecub(st, argv[1]);
+	{
+		if (ft_savecub(st, argv[1]) == 0)
+		{
+			ft_clearstruct(st);
+			exit(EXIT_FAILURE);
+		}
+	}
 	else if (argc == 2 && ft_searchdotcub(argv[1], ".cub") == NULL)
 	{
 		st->check = 1;
@@ -30,13 +45,7 @@ int			ft_sortmain(int argc, char **argv, t_cubed *st)
 		st->screen = 1;
 	}
 	else
-	{
-		st->check = 1;
-		ft_clearstruct(st);
-		ft_putstr("\e[41mError\e[00m\n\n- 3rd argument must be '--save'");
-		ft_putstr("to make a screenshot of the game\n\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_sortsortmain(st);
 }
 
 int			main(int argc, char **argv)

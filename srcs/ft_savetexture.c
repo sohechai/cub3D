@@ -126,25 +126,29 @@ int		ft_savewe(t_cubed *st, t_img *texture)
 
 int		ft_savetexture(t_cubed *st)
 {
-	if (ft_saveno(st, st->north) == 0 || ft_saveso(st, st->south) == 0 ||
-		ft_saveea(st, st->east) == 0 || ft_savewe(st, st->west) == 0 ||
-		ft_savesprite(st, st->sprit) == 0)
+	if (ft_saveno(st, st->north) == 0)
 	{
-		st->check = 1;
-		ft_putstr("\e[41mError\e[00m\n\n");
-		ft_putstr("Wrong path file :\n\n");
-		if (ft_saveno(st, st->north) == 0)
-			ft_errorpathno(st);
-		if (ft_saveso(st, st->south) == 0)
-			ft_errorpathso(st);
-		if (ft_saveea(st, st->east) == 0)
-			ft_errorpathea(st);
-		if (ft_savewe(st, st->west) == 0)
-			ft_errorpathwe(st);
-		if (ft_savesprite(st, st->sprit) == 0)
-			ft_errorpathsprite(st);
+		ft_errorpathso(st);
 		return (0);
 	}
-	else
-		return (1);
+	if (ft_saveso(st, st->south) == 0)
+	{
+		ft_errorpathso(st);
+		return (0);
+	}
+	if (ft_saveea(st, st->east) == 0)
+	{
+		ft_errorpathso(st);
+		return (0);
+	}
+	if (ft_savewe(st, st->west) == 0)
+	{
+		ft_errorpathso(st);
+		return (0);
+	}
+	if (ft_savesprite(st, st->sprit) == 0)
+	{
+		ft_errorpathso(st);
+		return (0);
+	}
 }

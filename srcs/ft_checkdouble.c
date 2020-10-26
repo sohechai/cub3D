@@ -33,6 +33,16 @@ int		ft_checktabcase(t_cubed *st)
 		j = 0;
 		i++;
 	}
+	return (1);
+}
+
+int		ft_checkdouble2(t_cubed *st)
+{
+	if (ft_checktabcase(st) == 0)
+	{
+		free(st->tab);
+		return (0);
+	}
 	free(st->tab);
 	return (1);
 }
@@ -51,8 +61,8 @@ int		ft_checkdouble(t_cubed *st)
 	}
 	if (!(st->tab = malloc(sizeof(int) * st->sizetab)))
 		return (0);
-	x = 0;
-	while (st->checkdouble[x] != 0)
+	x = -1;
+	while (st->checkdouble[++x] != 0)
 	{
 		if (ft_isalpha(st->checkdouble[x][0]) == 1)
 		{
@@ -61,7 +71,7 @@ int		ft_checkdouble(t_cubed *st)
 				st->tab[i] += st->checkdouble[x][1];
 			i++;
 		}
-		x++;
 	}
+	ft_checkdouble2(st);
 	return (1);
 }

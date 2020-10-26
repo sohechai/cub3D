@@ -46,7 +46,8 @@ void		ft_freeimg(t_img *img, t_window *window)
 
 void		ft_clearstruct(t_cubed *st)
 {
-	ft_freesplits(st->map);
+	if (st->map)
+		ft_freesplits(st->map);
 	free(st->rgb);
 	ft_freeimg(st->north, st->window);
 	ft_freeimg(st->south, st->window);

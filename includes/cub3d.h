@@ -137,6 +137,7 @@ typedef struct			s_cubed
 	t_sprites			*firstsprite;
 
 	int					screen;
+	int					check2;
 
 	double				posx;
 	double				posy;
