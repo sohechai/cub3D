@@ -12,7 +12,7 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define BUF_SIZE 1000
+# define BUF_SIZE 80000
 # define HEIGHT 500
 # define WIDTH 700
 # define MAPH 10
@@ -155,6 +155,7 @@ typedef struct			s_cubed
 	char				*tmp;
 	char				*strcheck;
 	char				*newstr;
+	char				*tmp2;
 
 	int					i;
 	int					stepx;
@@ -267,5 +268,6 @@ int						move_right(t_cubed *st);
 int						move_left(t_cubed *st);
 void					rotate_left(t_cubed *st);
 void					rotate_right(t_cubed *st);
+void					ft_freesplits(char **str);
 
 #endif

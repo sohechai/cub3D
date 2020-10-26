@@ -14,19 +14,19 @@
 
 static	int		ft_key(int keycode, t_cubed *st)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 		ft_exitgame(st);
-	else if (keycode == 0)
+	else if (keycode == 97)
 		move_left(st);
-	else if (keycode == 1)
+	else if (keycode == 115)
 		move_backward(st);
-	else if (keycode == 2)
+	else if (keycode == 100)
 		move_right(st);
-	else if (keycode == 13)
+	else if (keycode == 119)
 		move_forward(st);
-	else if (keycode == 123)
+	else if (keycode == 65361)
 		rotate_left(st);
-	else if (keycode == 124)
+	else if (keycode == 65363)
 		rotate_right(st);
 	return (1);
 }
@@ -45,8 +45,8 @@ int				ft_openwindow(t_cubed *st, t_window *window, t_img *img)
 	st->img->img_data = (int *)mlx_get_data_addr(st->img->img_ptr,
 	&st->img->bpp, &st->img->sizeline, &st->img->endian);
 	ft_draw(st, st->window, st->ray, img);
-	mlx_hook(st->window->win_ptr, 2, 0, ft_key, st);
-	mlx_hook(st->window->win_ptr, 17, 0, ft_destroywindow, st);
+	mlx_hook(st->window->win_ptr, 2, 1L << 0, ft_key, st);
+	mlx_hook(st->window->win_ptr, 17, 1L << 17, ft_destroywindow, st);
 	mlx_loop(st->window->mlx_ptr);
 	return (1);
 }

@@ -35,6 +35,16 @@ char	*ft_searchdotcub(const char *s1, const char *s2)
 	return (NULL);
 }
 
+void	ft_freesplits(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
 int		ft_checkfiles(t_cubed *st)
 {
 	int		x;
@@ -73,8 +83,7 @@ int		ft_savecub(t_cubed *st, char *filemap)
 		buf[ret] = '\0';
 	if (fd < 0)
 	{
-		ft_putstr("\e[41mError\e[00m\n\n");
-		ft_putstr("- Map file was not found\n\n");
+		ft_putstr("\e[41mError\e[00m\n- Map file was not found\n");
 		return (0);
 	}
 	st->mapfile = ft_strdup(buf);
@@ -83,10 +92,11 @@ int		ft_savecub(t_cubed *st, char *filemap)
 	st->checkdouble = ft_split(st->strcheck, '\n');
 	close(fd);
 	ft_checkfiles(st);
-	free(st->worldmap);
+	ft_freesplits(st->worldmap);
 	free(st->strcheck);
 	free(st->tmp);
 	free(st->mapfile);
-	free(st->checkdouble);
+	ft_freesplits(st->checkdouble);
+	free(st->newstr);
 	return (1);
 }

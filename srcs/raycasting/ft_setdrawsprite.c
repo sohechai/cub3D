@@ -30,9 +30,9 @@ void		ft_putspritetexture(t_cubed *st, t_sprites *sprite)
 
 void		ft_putsprite1(t_cubed *st, t_window *window, t_sprites *sprite)
 {
-	int	d;
-	int	color;
-	int	index;
+	size_t	d;
+	int		color;
+	int		index;
 
 	d = sprite->y * st->sprit->sizeline - window->height
 	* st->sprit->sizeline / 2 + sprite->spriteheight

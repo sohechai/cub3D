@@ -49,7 +49,7 @@ SRC 	=	./srcs/main.c\
 			./srcs/utils/ft_initstruct2.c\
 			./srcs/utils/ft_saveimage.c\
 
-FLAGS 	=	-Wall -Wextra -Werror
+FLAGS 	=	-Wall -Wextra -Werror -fsanitize=address -g3
 
 OBJ		= 	$(SRC:.c=.o)
 

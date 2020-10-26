@@ -40,7 +40,7 @@ void		ft_createnewsprite(t_cubed *st, t_ray *ray)
 	t_sprites	*now;
 	double		distance;
 
-	if (!(new = (t_sprite *)malloc(sizeof(t_sprite))))
+	if (!(new = malloc(sizeof(t_sprite) * 1)))
 		return ;
 	new->x = ray->mapx;
 	new->y = ray->mapy;

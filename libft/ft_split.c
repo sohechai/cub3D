@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 static void		free_tab(char **tab)
@@ -42,12 +41,10 @@ static size_t	ft_countwords(char const *s, char c)
 static char		*ft_sizewords(char const *s, char c)
 {
 	size_t	i;
-	size_t	j;
 	size_t	count_size;
 	char	*tab_str;
 
 	i = 0;
-	j = 0;
 	count_size = 0;
 	while (s[i] != '\0')
 	{

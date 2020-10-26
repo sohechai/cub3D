@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
 	long	max;
 
-	i = 0;
 	max = n;
 	if (max < 0)
 	{

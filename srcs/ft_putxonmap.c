@@ -93,13 +93,11 @@ void		ft_replacespacex(t_cubed *st, char *tmp)
 
 int			ft_putxonmap(t_cubed *st, char *str)
 {
-	char	*tmp;
-
 	st->longestline = ft_longestline(st, str);
 	st->nbofline = ft_numberofline(st, str);
 	st->lenuntiln = 0;
 	st->lenmax = st->longestline;
-	tmp = ft_strdup(str);
+	st->tmp2 = ft_strdup(str);
 	if (!(st->newstr = malloc(sizeof(char) *
 		((st->longestline + 2) * (st->nbofline + 2)) + 1)))
 		return (0);
@@ -109,7 +107,7 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	st->newstr[st->l] = 'X';
 	st->l++;
 	st->lenmax = st->longestline;
-	ft_replacespacex(st, tmp);
+	ft_replacespacex(st, st->tmp2);
 	st->newstr[st->l] = 'X';
 	st->l++;
 	st->newstr[st->l] = '\n';
@@ -117,5 +115,6 @@ int			ft_putxonmap(t_cubed *st, char *str)
 	ft_putlineofx(st);
 	st->newstr[st->l] = '\0';
 	ft_strcpy(str, st->newstr);
+	free(st->tmp2);
 	return (1);
 }

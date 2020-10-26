@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 static int	ft_sizenumber(int n)
@@ -44,8 +43,6 @@ char		*ft_itoa(int n)
 	if (!(nb_str = malloc(sizeof(char) * ft_sizenumber(n) + 1)))
 		return (NULL);
 	nb_str[cmpt--] = '\0';
-	// if (n == -2147483648)
-	// 	return (ft_strdup("-2147483648"));
 	if (n == 0)
 	{
 		nb_str[0] = '0';

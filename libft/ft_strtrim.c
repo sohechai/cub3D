@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 static char		*ft_cpy(char *dest, char const *s1, size_t start, size_t len)

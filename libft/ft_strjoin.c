@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 static char	*ft_strwrite(char const *s1, char const *s2, char *dest)

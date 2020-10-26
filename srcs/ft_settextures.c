@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void	set_texture(t_cubed *st, t_img *texture)
+void		set_texture(t_cubed *st, t_img *texture)
 {
 	if (!(texture->img_ptr = mlx_xpm_file_to_image(st->window->mlx_ptr,
 		texture->path, &texture->width, &texture->height)))
@@ -21,8 +21,7 @@ static void	set_texture(t_cubed *st, t_img *texture)
 		ft_putstr("- Failed loading texture\n");
 		exit(EXIT_FAILURE);
 	}
-	texture->img_data =
-		mlx_get_data_addr(texture->img_ptr, &(texture->bpp),
+	texture->img_data = mlx_get_data_addr(texture->img_ptr, &(texture->bpp),
 		&(texture->sizeline), &(texture->endian));
 }
 
