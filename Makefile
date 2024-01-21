@@ -73,13 +73,7 @@ $(NAME): 	$(OBJ)
 
 %.o: %.c 	@includes/cub3d.h
 	 		@gcc -I includes -o $@ -c $< $(FLAGS)
-			@printf "\33[2K\r\033[0;31;5;110mLoading .\033[37m"
-			@sleep 0.5
-			@printf "\33[2K\r\033[0;31;5;110mLoading ..\033[37m"
-			@sleep 0.5
-			@printf "\33[2K\r\033[0;31;5;110mLoading ...\033[37m"
-			@sleep 0.5
-			@printf "\33[2K\r\033[0;31;5;110mLoading ....\033[37m"
+			
 
 clean:
 			@$(MAKE) clean -C libft
