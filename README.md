@@ -23,4 +23,13 @@ This project aims to develop your C programming skills while exploring the field
 ## Examples
 - [Wolfeinstein3D](http://users.atw.hu/wolf3d/)
 
-**Cub3D** provides an exciting journey to explore the blend of programming and graphic design. Good luck!
+## Usage
+1. Run the command `make all` to compile the Cub3D project.
+2. Execute the game using the following command: `./cub3d [map]`
+
+## How to Play
+- Use the arrow keys to rotate the camera (look left and right).
+- Move the character with the keys W, A, S, and D.
+- Press ESC or Click the red cross on the window click the red cross on the window to close the window and exit the game.
+
+**Note:** Ensure the map file is provided in the required format (.cub) as described in the project specifications.
