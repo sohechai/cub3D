@@ -151,4 +151,5 @@ int		ft_savetexture(t_cubed *st)
 		ft_errorpathso(st);
 		return (0);
 	}
+	return (1);
 }

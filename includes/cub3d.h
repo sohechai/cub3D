@@ -230,6 +230,10 @@ int						ft_putxonmap(t_cubed *st, char *str);
 int						ft_checkmapcar(t_cubed *st);
 int						ft_draw(t_cubed *st, t_window *window, t_ray ray,
 								t_img *img);
+void					ft_draw1(t_cubed *st, t_window *window, t_ray *ray);
+void					ft_draw2(t_cubed *st, t_ray *ray);
+void					ft_draw3(t_cubed *st, t_ray *ray);
+void					ft_draw4(t_cubed *st, t_ray *ray, t_window *window, t_img *img);
 int						ft_destroywindow(t_cubed *st, t_window *window);
 
 void					ft_exitgame(t_cubed *st);

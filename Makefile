@@ -14,7 +14,7 @@ NAME 	=	cub3d
 
 HEADER 	=	./includes/cub3d.h
 
-MINILIB = 	./minilibx/ -lX11 -lXext -L minilibx/ -lmlx -lm -pthread -lbsd
+MINILIB = 	./minilibx/ -framework OpenGL -framework AppKit
 
 SRC 	=	./srcs/main.c\
 			./srcs/ft_openwindow.c\
@@ -49,7 +49,7 @@ SRC 	=	./srcs/main.c\
 			./srcs/utils/ft_initstruct2.c\
 			./srcs/utils/ft_saveimage.c\
 
-FLAGS 	=	-Wall -Wextra -Werror -fsanitize=address -g3
+FLAGS 	=	-Wall -Wextra -Werror
 
 OBJ		= 	$(SRC:.c=.o)
 
@@ -58,30 +58,45 @@ RM		=	rm -rf
 all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
-			@make  -C minilibx
 			@make  -C libft
 	 		@gcc $(FLAGS) -I includes -o $@ $^ minilibx/libmlx.a libft/libft.a -I $(HEADER) -L $(MINILIB)
-	@echo " \033[2K\r\033[95m\n\n\n\n\n\n.\n.\n..\n...\n....\n....\n...\n..\n.\n.\033[0m"
-	@echo " \033[2K\r\033[95m.\n.\n..\n...\n....\n....\n...\n..\n.\n.\033[0m"
-	@echo "	\033[2K\r\033[95m\n$(NAME) is ready to be executed :)\n\033[0m"
-	@echo "	\033[2K\r\033[95m\nTo start the game please type : ./cub3d and add a map file ending by '.cub' :\n\033[0m"
+	@echo "\n\033[1;32m╔═══════════════════════════════════════════╗\033[0m"
+	@echo "\033[1;32m║ ███████╗██╗   ██╗██████╗ ██████╗ ██████╗  ║\033[0m"
+	@echo "\033[1;32m║ ██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗ ║\033[0m"
+	@echo "\033[1;32m║ ██║     ██║   ██║██████╔╝ █████╔╝██║  ██║ ║\033[0m"
+	@echo "\033[1;32m║ ██║     ██║   ██║██╔══██╗ ╚═══██╗██║  ██║ ║\033[0m"
+	@echo "\033[1;32m║ ╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝ ║\033[0m"
+	@echo "\033[1;32m║ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝   ║\033[0m"
+	@echo "\033[1;32m╚═══════════════════════════════════════════╝\033[0m"
+	@echo "\033[1;32m\n\nTo start the game, please run: ./cub3d <map_file>.cub\n\033[0m"
 
 
 %.o: %.c 	@includes/cub3d.h
 	 		@gcc -I includes -o $@ -c $< $(FLAGS)
+			@printf "\33[2K\r\033[0;31;5;110mLoading .\033[37m"
+			@sleep 0.5
+			@printf "\33[2K\r\033[0;31;5;110mLoading ..\033[37m"
+			@sleep 0.5
+			@printf "\33[2K\r\033[0;31;5;110mLoading ...\033[37m"
+			@sleep 0.5
+			@printf "\33[2K\r\033[0;31;5;110mLoading ....\033[37m"
 
 clean:
-			@$(MAKE) clean -C minilibx
 			@$(MAKE) clean -C libft
 			@$(RM) $(OBJ)
-	@echo " \033[2K\r\033[0;38;5;121m\n\n\n\n\n\n.\n.\n..\n...\n....\n....\n...\n..\n.\n.\033[0m"
-	@echo " \033[2K\r\033[0;38;5;121m.\n.\n..\n...\n....\n....\n...\n..\n.\n.\033[0m"
-	@echo "\033[2K\033[0;38;5;121m\n./$(NAME), *.o and *.a have been deleted\n\nFiles of $(NAME) are now clean :)\n"
+	@echo "\n\033[1;32m╔═══════════════════════════════════════════╗\033[0m"
+	@echo "\033[1;32m║ ███████╗██╗   ██╗██████╗ ██████╗ ██████╗  ║\033[0m"
+	@echo "\033[1;32m║ ██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗ ║\033[0m"
+	@echo "\033[1;32m║ ██║     ██║   ██║██████╔╝ █████╔╝██║  ██║ ║\033[0m"
+	@echo "\033[1;32m║ ██║     ██║   ██║██╔══██╗ ╚═══██╗██║  ██║ ║\033[0m"
+	@echo "\033[1;32m║ ╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝ ║\033[0m"
+	@echo "\033[1;32m║ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝   ║\033[0m"
+	@echo "\033[1;32m╚═══════════════════════════════════════════╝\033[0m"
+	@echo "\033[1;32m\n\nEvrythings clean, thank you :)\n\033[0m"
 
 fclean: 	clean
 			@$(RM) $(NAME)
 			@$(RM) libft/*.a
-			@$(RM) minilibx/*.a
 
 re: 		fclean all
 

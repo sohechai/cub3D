@@ -46,6 +46,7 @@ int			ft_sortmain(int argc, char **argv, t_cubed *st)
 	}
 	else
 		ft_sortsortmain(st);
+	return (0);
 }
 
 int			main(int argc, char **argv)

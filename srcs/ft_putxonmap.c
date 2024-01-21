@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "../libft/libft.h"
 
 int			ft_longestline(t_cubed *st, char *str)
 {

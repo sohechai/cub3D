@@ -12,6 +12,32 @@
 
 #include "../includes/cub3d.h"
 
+int		ft_checkfiles(t_cubed *st)
+{
+	if (ft_checkdouble(st) == 0)
+	{
+		ft_putstr("\e[41mError\e[00m\n\n");
+		ft_putstr("- Do not duplicate informations in the file\n\n");
+		ft_freesplits(st->checkdouble);
+		return (0);
+	}
+	if (ft_saveres(st) == 0 || ft_savetexture(st) == 0 || ft_savecolor(st) == 0)
+	{
+		ft_freesplits(st->checkdouble);
+		return (0);
+	}
+	if (ft_gotomap(st) == 0 || ft_maperror(st) == 0)
+	{
+		ft_freesplits(st->worldmap);
+		ft_freesplits(st->checkdouble);
+		free(st->finalmap);
+		return (0);
+	}
+	st->map = ft_split(st->finalmap, '\n');
+	free(st->finalmap);
+	return (1);
+}
+
 int		ft_freesavefile(t_cubed *st)
 {
 	if (ft_checkfiles(st) == 0)
@@ -62,32 +88,6 @@ void	ft_freesplits(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
-}
-
-int		ft_checkfiles(t_cubed *st)
-{
-	if (ft_checkdouble(st) == 0)
-	{
-		ft_putstr("\e[41mError\e[00m\n\n");
-		ft_putstr("- Do not duplicate informations in the file\n\n");
-		ft_freesplits(st->checkdouble);
-		return (0);
-	}
-	if (ft_saveres(st) == 0 || ft_savetexture(st) == 0 || ft_savecolor(st) == 0)
-	{
-		ft_freesplits(st->checkdouble);
-		return (0);
-	}
-	if (ft_gotomap(st) == 0 || ft_maperror(st) == 0)
-	{
-		ft_freesplits(st->worldmap);
-		ft_freesplits(st->checkdouble);
-		free(st->finalmap);
-		return (0);
-	}
-	st->map = ft_split(st->finalmap, '\n');
-	free(st->finalmap);
-	return (1);
 }
 
 int		ft_savecub(t_cubed *st, char *filemap)

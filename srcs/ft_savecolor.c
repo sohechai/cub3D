@@ -47,6 +47,7 @@ int			ft_savergbdata(t_cubed *st)
 				return (1);
 		}
 	}
+	return (1);
 }
 
 int			ft_save_ceilingcolor(t_cubed *st)
@@ -76,6 +77,7 @@ int			ft_save_ceilingcolor(t_cubed *st)
 	}
 	else
 		return (0);
+	return (1);
 }
 
 int			ft_save_floorcolor(t_cubed *st)
@@ -105,6 +107,7 @@ int			ft_save_floorcolor(t_cubed *st)
 	}
 	else
 		return (0);
+	return (1);
 }
 
 int			ft_savecolor(t_cubed *st)
@@ -122,4 +125,5 @@ int			ft_savecolor(t_cubed *st)
 	}
 	else
 		return (1);
+	return (1);
 }
