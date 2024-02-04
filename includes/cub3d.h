@@ -13,8 +13,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 # define BUF_SIZE 80000
-# define HEIGHT 500
-# define WIDTH 700
+# define HEIGHT 700
+# define WIDTH 900
 # define MAPH 10
 # define MAPW 10
 # include "../minilibx/mlx.h"

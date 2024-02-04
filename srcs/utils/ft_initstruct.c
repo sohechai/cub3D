@@ -90,7 +90,7 @@ void		ft_initst_01(t_cubed *st)
 	st->planey = 0;
 	st->player = 0;
 	st->movespeed = 0.25;
-	st->rotspeed = 0.13;
+	st->rotspeed = 0.20;
 	st->rgb->rgb.r = 0;
 	st->rgb->rgb.g = 0;
 	st->rgb->rgb.b = 0;
