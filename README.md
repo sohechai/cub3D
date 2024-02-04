@@ -21,7 +21,7 @@ This project aims to develop your C programming skills while exploring the field
 - **Description:** Realistic 3D graphic representation with ray-casting.
 
 ## Examples
-- [Wolfeinstein3D](http://users.atw.hu/wolf3d/)
+- [Wolfenstein 3d](http://users.atw.hu/wolf3d/)
 
 ## Usage
 1. Run the command `make all` to compile the Cub3D project.
