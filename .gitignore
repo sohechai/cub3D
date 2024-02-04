@@ -1,0 +1,20 @@
+# Fichiers objets
+*.o
+*.a
+
+# Fichiers exécutables
+cub3d
+
+# Fichiers de débogage
+*.dSYM/
+*.swp
+
+# Fichiers générés par l'éditeur de liens
+bin/
+
+# Fichiers de sauvegarde
+*~
+
+# Fichiers de configuration
+config.h
+config.mk
